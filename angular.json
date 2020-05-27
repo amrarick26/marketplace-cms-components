@@ -37,7 +37,8 @@
             ],
             "scripts": [
               "node_modules/tinymce/tinymce.min.js",
-              "tinymce/plugins/oc-product/plugin.js"
+              "tinymce/plugins/oc-product/plugin.js",
+              "tinymce/plugins/grid/plugin.js"
             ]
           },
           "configurations": {

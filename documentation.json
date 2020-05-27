@@ -630,11 +630,11 @@
     "directives": [
         {
             "name": "BgColorDirective",
-            "id": "directive-BgColorDirective-3f6968c7b19bf76ef49c83b500c6ec36",
+            "id": "directive-BgColorDirective-8e6f1e55e44c32d86a21fc50ca45fd63",
             "file": "src/app/directives/bg-color.directive.ts",
             "type": "directive",
             "description": "",
-            "sourceCode": "import { Directive, Input, ElementRef, OnInit } from '@angular/core';\nimport Color from 'color';\n\n@Directive({\n  selector: '[cmsBgColor]',\n})\nexport class BgColorDirective implements OnInit {\n  @Input() cmsBgColor?: string;\n  el: ElementRef;\n  constructor(el: ElementRef) {\n    this.el = el;\n  }\n\n  ngOnInit() {\n    if (this.cmsBgColor) {\n      try {\n        const color = new Color(this.cmsBgColor);\n        this.el.nativeElement.style.backgroundColor = color.hex();\n      } catch (ex) {\n        console.log(ex);\n        throw ex;\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import { Directive, Input, ElementRef, OnInit } from '@angular/core';\r\nimport Color from 'color';\r\n\r\n@Directive({\r\n  selector: '[cmsBgColor]',\r\n})\r\nexport class BgColorDirective implements OnInit {\r\n  @Input() cmsBgColor?: string;\r\n  el: ElementRef;\r\n  constructor(el: ElementRef) {\r\n    this.el = el;\r\n  }\r\n\r\n  ngOnInit() {\r\n    if (this.cmsBgColor) {\r\n      try {\r\n        const color = new Color(this.cmsBgColor);\r\n        this.el.nativeElement.style.backgroundColor = color.hex();\r\n      } catch (ex) {\r\n        console.log(ex);\r\n        throw ex;\r\n      }\r\n    }\r\n  }\r\n}\r\n",
             "selector": "[cmsBgColor]",
             "providers": [],
             "inputsClass": [
@@ -741,7 +741,7 @@
         },
         {
             "name": "CarouselComponent",
-            "id": "component-CarouselComponent-46cc5ee0b149ff35f82c8402e2a1442b",
+            "id": "component-CarouselComponent-a8bd7a7a70afeeb7e81d8aea97e915eb",
             "file": "src/app/components/carousel/carousel.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -786,7 +786,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\nimport {\n  CmsCarouselOptions,\n  CmsCarouselSlideConfig,\n} from 'src/app/models/CmsCarousel.interface';\n\nexport const CMS_CAROUSEL_DEFAULT_OPTIONS: CmsCarouselOptions = {\n  arrows: true,\n  indicators: true,\n  wrap: true,\n  interval: 5000,\n};\n\n@Component({\n  selector: 'cms-carousel',\n  templateUrl: './carousel.component.html',\n  styleUrls: ['./carousel.component.scss'],\n})\nexport class CarouselComponent implements OnInit {\n  @Input() slides: CmsCarouselSlideConfig[];\n  @Input() options?: CmsCarouselOptions;\n\n  constructor() {}\n\n  ngOnInit(): void {\n    this.options = { ...CMS_CAROUSEL_DEFAULT_OPTIONS, ...this.options };\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\nimport {\r\n  CmsCarouselOptions,\r\n  CmsCarouselSlideConfig,\r\n} from 'src/app/models/CmsCarousel.interface';\r\n\r\nexport const CMS_CAROUSEL_DEFAULT_OPTIONS: CmsCarouselOptions = {\r\n  arrows: true,\r\n  indicators: true,\r\n  wrap: true,\r\n  interval: 5000,\r\n};\r\n\r\n@Component({\r\n  selector: 'cms-carousel',\r\n  templateUrl: './carousel.component.html',\r\n  styleUrls: ['./carousel.component.scss'],\r\n})\r\nexport class CarouselComponent implements OnInit {\r\n  @Input() slides: CmsCarouselSlideConfig[];\r\n  @Input() options?: CmsCarouselOptions;\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {\r\n    this.options = { ...CMS_CAROUSEL_DEFAULT_OPTIONS, ...this.options };\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -804,7 +804,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ngb-carousel\n  *ngIf=\"slides\"\n  class=\"carousel-fade\"\n  [interval]=\"options.interval\"\n  [showNavigationArrows]=\"options.arrows\"\n  [showNavigationIndicators]=\"options.indicators\"\n  [wrap]=\"options.wrap\"\n>\n  <ng-template *ngFor=\"let slide of slides\" ngbSlide>\n    <div\n      *ngIf=\"slide.background\"\n      class=\"cms-carousel-slide-bg\"\n      [cmsBgColor]=\"slide.background.color\"\n    >\n      <img\n        *ngIf=\"slide.background.image\"\n        [src]=\"slide.background.image.url\"\n        [alt]=\"slide.background.image.title\"\n      />\n    </div>\n    <div *ngIf=\"slide.text\" class=\"carousel-caption\">\n      <h3 *ngIf=\"slide.text.title\">{{ slide.text.title }}</h3>\n      <p *ngIf=\"slide.text.subtitle\">{{ slide.text.subtitle }}</p>\n    </div>\n  </ng-template>\n</ngb-carousel>\n"
+            "templateData": "<ngb-carousel\r\n  *ngIf=\"slides\"\r\n  class=\"carousel-fade\"\r\n  [interval]=\"options.interval\"\r\n  [showNavigationArrows]=\"options.arrows\"\r\n  [showNavigationIndicators]=\"options.indicators\"\r\n  [wrap]=\"options.wrap\"\r\n>\r\n  <ng-template *ngFor=\"let slide of slides\" ngbSlide>\r\n    <div\r\n      *ngIf=\"slide.background\"\r\n      class=\"cms-carousel-slide-bg\"\r\n      [cmsBgColor]=\"slide.background.color\"\r\n    >\r\n      <img\r\n        *ngIf=\"slide.background.image\"\r\n        [src]=\"slide.background.image.url\"\r\n        [alt]=\"slide.background.image.title\"\r\n      />\r\n    </div>\r\n    <div *ngIf=\"slide.text\" class=\"carousel-caption\">\r\n      <h3 *ngIf=\"slide.text.title\">{{ slide.text.title }}</h3>\r\n      <p *ngIf=\"slide.text.subtitle\">{{ slide.text.subtitle }}</p>\r\n    </div>\r\n  </ng-template>\r\n</ngb-carousel>\r\n"
         },
         {
             "name": "ColumnComponent",
@@ -1091,7 +1091,7 @@
         },
         {
             "name": "HtmlEditorComponent",
-            "id": "component-HtmlEditorComponent-3ef091e9ac93a4ef4bfb9caf3ab2d291",
+            "id": "component-HtmlEditorComponent-9f914a2dd50f965e7ab489cfc630ccaf",
             "file": "src/app/components/html-editor/html-editor.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1112,6 +1112,11 @@
                     "name": "ocCookieName",
                     "line": 10,
                     "type": "string"
+                },
+                {
+                    "name": "remoteCss",
+                    "line": 11,
+                    "type": "string"
                 }
             ],
             "outputsClass": [],
@@ -1123,7 +1128,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 14
+                    "line": 15
                 }
             ],
             "hostBindings": [],
@@ -1131,11 +1136,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\nimport { OcTokenService } from '@ordercloud/angular-sdk';\r\n\r\n@Component({\r\n  selector: 'cms-html-editor',\r\n  templateUrl: './html-editor.component.html',\r\n  styleUrls: ['./html-editor.component.scss']\r\n})\r\nexport class HtmlEditorComponent implements OnInit {\r\n  @Input() ocCookieName: string;\r\n\r\n  constructor(private ocTokenService: OcTokenService) {}\r\n\r\n  ngOnInit(): void {\r\n    this.ocTokenService.SetAccess(\r\n      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJhcmFyaWNrXzJAZm91cjUxLmNvbSIsImNpZCI6ImNlMDk1YTMwLWJlZmYtNGVkYy1iOTYwLTZiMDhmZjg4NDNmZSIsInUiOiIxMTgxMjQ3IiwidXNydHlwZSI6ImFkbWluIiwicm9sZSI6WyJBZGRyZXNzQWRtaW4iLCJNZUFkbWluIiwiT3JkZXJBZG1pbiIsIk92ZXJyaWRlU2hpcHBpbmciLCJPdmVycmlkZVRheCIsIk92ZXJyaWRlVW5pdFByaWNlIiwiUHJvZHVjdEFkbWluIiwiUGFzc3dvcmRSZXNldCIsIlNldFNlY3VyaXR5UHJvZmlsZSIsIlByaWNlU2NoZWR1bGVBZG1pbiIsIlN1cHBsaWVyQWRtaW4iLCJTdXBwbGllclVzZXJBZG1pbiIsIlN1cHBsaWVyQWRkcmVzc0FkbWluIiwiU2hvcHBlciIsIlNoaXBtZW50QWRtaW4iLCJTdXBwbGllclJlYWRlciIsIlByb21vdGlvbkFkbWluIiwiQnV5ZXJSZWFkZXIiLCJCdXllckFkbWluIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTU5MDYxNzcxNCwibmJmIjoxNTkwNTg3NzE0fQ.IjDUzDyW4KJvFlJu8pPL4ZMtVzh6ze1g01FrCKOyvxI'\r\n    );\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\nimport { OcTokenService } from '@ordercloud/angular-sdk';\r\n\r\n@Component({\r\n  selector: 'cms-html-editor',\r\n  templateUrl: './html-editor.component.html',\r\n  styleUrls: ['./html-editor.component.scss']\r\n})\r\nexport class HtmlEditorComponent implements OnInit {\r\n  @Input() ocCookieName: string;\r\n  @Input() remoteCss: string;\r\n\r\n  constructor(private ocTokenService: OcTokenService) {}\r\n\r\n  ngOnInit(): void {\r\n    this.ocTokenService.SetAccess(\r\n      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJhbm9uLXRlbXBsYXRlLXVzZXIiLCJjaWQiOiJlOTU1ZDZlYy01OWM4LTQ0NDItOTQ4ZS0xNmNjYzVmZDI3YWUiLCJvcmRlcmlkIjoibXRXUnYtT1lvVXFhekQyRm5yVWpwdyIsInUiOiIxMDIwMjMwIiwidXNydHlwZSI6ImJ1eWVyIiwicm9sZSI6WyJNZUFkZHJlc3NBZG1pbiIsIk1lQWRtaW4iLCJNZUNyZWRpdENhcmRBZG1pbiIsIk1lWHBBZG1pbiIsIlNob3BwZXIiLCJTdXBwbGllclJlYWRlciIsIlN1cHBsaWVyQWRkcmVzc1JlYWRlciIsIlBhc3N3b3JkUmVzZXQiLCJCdXllclJlYWRlciJdLCJpc3MiOiJodHRwczovL2F1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1OTEyMDQ0MzYsIm5iZiI6MTU5MDU5OTYzNn0.JvRJnjNaYwSlh-4k1Nk6xevT5qLrCcVjvfH56zME6VQ'\r\n    );\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "\r\n",
                     "styleUrl": "./html-editor.component.scss"
                 }
             ],
@@ -1149,7 +1154,7 @@
                         "type": "OcTokenService"
                     }
                 ],
-                "line": 10,
+                "line": 11,
                 "jsdoctags": [
                     {
                         "name": "ocTokenService",
@@ -1163,7 +1168,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<editor\r\n  [init]=\"{\r\n    base_url: '/tinymce',\r\n    suffix: '.min',\r\n    height: 500,\r\n    menubar: false,\r\n    plugins: [\r\n      'table oc-product advlist autolink lists link image charmap print preview anchor',\r\n      'searchreplace visualblocks code fullscreen',\r\n      'insertdatetime media table paste code help wordcount'\r\n    ],\r\n    toolbar:\r\n      'oc-product undo redo | formatselect | bold italic backcolor | \\\r\n      alignleft aligncenter alignright alignjustify | \\\r\n      bullist numlist outdent indent table | removeformat | help',\r\n    ocCookieName: ocCookieName\r\n  }\"\r\n></editor>\r\n"
+            "templateData": "<editor\r\n  [init]=\"{\r\n    base_url: '/tinymce',\r\n    suffix: '.min',\r\n    content_css: remoteCss,\r\n    height: 500,\r\n    menubar: false,\r\n    plugins: [\r\n      'oc-product grid advlist autolink lists link image charmap print preview anchor',\r\n      'searchreplace visualblocks code fullscreen',\r\n      'insertdatetime media table paste code help wordcount'\r\n    ],\r\n    toolbar:\r\n      'oc-product grid undo redo | formatselect | bold italic backcolor | \\\r\n      alignleft aligncenter alignright alignjustify | \\\r\n      bullist numlist outdent indent table | removeformat | help',\r\n    ocCookieName: ocCookieName\r\n  }\"\r\n></editor>\r\n"
         },
         {
             "name": "PageComponent",
@@ -1532,22 +1537,6 @@
                 "name": "BasicExample",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/storybook/carousel.stories.ts",
-                "type": "",
-                "defaultValue": "() => ({\r\n  component: CarouselComponent,\r\n  props: {\r\n    slides: BasicExampleSlides,\r\n  },\r\n})"
-            },
-            {
-                "name": "BasicExample",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/storybook/html-editor.stories.ts",
-                "type": "",
-                "defaultValue": "() => ({\r\n  component: HtmlEditorComponent,\r\n  props: {\r\n    ocCookieName: 'ordercloud.token'\r\n  }\r\n})"
-            },
-            {
-                "name": "BasicExample",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/storybook/row.stories.ts",
                 "type": "",
                 "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#EF476F\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#06D6A0\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc\r\n    }\r\n})"
@@ -1559,6 +1548,22 @@
                 "file": "src/storybook/page.stories.ts",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: PageComponent,\r\n  props: {\r\n    content: BasicExamplePage\r\n  },\r\n})"
+            },
+            {
+                "name": "BasicExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/carousel.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: CarouselComponent,\r\n  props: {\r\n    slides: BasicExampleSlides,\r\n  },\r\n})"
+            },
+            {
+                "name": "BasicExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/html-editor.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: HtmlEditorComponent,\r\n  props: {\r\n    ocCookieName: 'ordercloud.token',\r\n    remoteCss:\r\n      'https://mgrstoragetest.azureedge.net/buyerweb/styles.e94215343d3493186ae1.css'\r\n  }\r\n})"
             },
             {
                 "name": "BasicExamplePage",
@@ -1582,7 +1587,7 @@
                 "subtype": "variable",
                 "file": "src/app/components/carousel/carousel.component.ts",
                 "type": "CmsCarouselOptions",
-                "defaultValue": "{\n  arrows: true,\n  indicators: true,\n  wrap: true,\n  interval: 5000,\n}"
+                "defaultValue": "{\r\n  arrows: true,\r\n  indicators: true,\r\n  wrap: true,\r\n  interval: 5000,\r\n}"
             },
             {
                 "name": "context",
@@ -1596,17 +1601,17 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
+                "file": "src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\r\n  production: true\r\n}"
+                "defaultValue": "{\r\n  production: false\r\n}"
             },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
+                "file": "src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\r\n  production: false\r\n}"
+                "defaultValue": "{\r\n  production: true\r\n}"
             },
             {
                 "name": "Offset",
@@ -1681,34 +1686,6 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "src/storybook/carousel.stories.ts": [
-                {
-                    "name": "BasicExample",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/storybook/carousel.stories.ts",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: CarouselComponent,\r\n  props: {\r\n    slides: BasicExampleSlides,\r\n  },\r\n})"
-                },
-                {
-                    "name": "BasicExampleSlides",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/storybook/carousel.stories.ts",
-                    "type": "CmsCarouselSlideConfig[]",
-                    "defaultValue": "[\r\n  {\r\n    text: {\r\n      title: 'First Slide',\r\n    },\r\n    background: {\r\n      image: {\r\n        url: `https://picsum.photos/id/944/1700/500`,\r\n        title: 'A metal bridge in the jungle',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    text: {\r\n      title: 'Second Slide',\r\n      subtitle: 'With a subtitle',\r\n    },\r\n    background: {\r\n      image: {\r\n        url: `https://picsum.photos/id/1011/1700/500`,\r\n        title: 'Woman canoeing',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    text: {\r\n      title: 'Third Slide',\r\n      subtitle: 'Background color instead of image',\r\n    },\r\n    background: {\r\n      color: 'blue',\r\n    },\r\n  },\r\n]"
-                }
-            ],
-            "src/storybook/html-editor.stories.ts": [
-                {
-                    "name": "BasicExample",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/storybook/html-editor.stories.ts",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: HtmlEditorComponent,\r\n  props: {\r\n    ocCookieName: 'ordercloud.token'\r\n  }\r\n})"
-                }
-            ],
             "src/storybook/row.stories.ts": [
                 {
                     "name": "BasicExample",
@@ -1761,6 +1738,34 @@
                     "defaultValue": "{\r\n  ComponentName: 'PageComponent',\r\n  SiteUrl: 'https://music-resell-store.com',\r\n  Url: '/page1',\r\n  Title: 'FAQ',\r\n  Description: 'Frequently Asked Questions',\r\n  MetaImageUrl: 'https://www.superoffice.com/globalassets/blog/2016/10/how-to-build-faq-section.jpg',\r\n  DateLastUpdated: '2020-05-15T03:55:03.021Z',\r\n  Active: true,\r\n  Content: [\r\n    {\r\n      'ComponentName': 'ContentBlockComponent',\r\n      'TextArea': `\r\n      <div class=\"container\">\r\n        <p style=\"max-width: 500px;\">\r\n          You can right click to inspect the html to see the metadata that are set. Its easier if you click 'Open canvas in a new tab' (top right).\r\n          You should see the following metadata set for this component:\r\n        </p>\r\n        <table class=\"table table-striped\">\r\n          <tr>\r\n            <th>Property</th>\r\n            <th>Value</th>\r\n          </tr>\r\n          <tr>\r\n            <td>Title</td>\r\n            <td>FAQ</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Description</td>\r\n            <td>Frequently Asked Questions</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Image</td>\r\n            <td>https://www.superoffice.com/globalassets/blog/2016/10/how-to-build-faq-section.jpg/<td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n      `,\r\n    },\r\n  ],\r\n  HeaderEmbeds: '',\r\n  FooterEmbeds: '',\r\n  NavTitle: null\r\n}"
                 }
             ],
+            "src/storybook/carousel.stories.ts": [
+                {
+                    "name": "BasicExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/carousel.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: CarouselComponent,\r\n  props: {\r\n    slides: BasicExampleSlides,\r\n  },\r\n})"
+                },
+                {
+                    "name": "BasicExampleSlides",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/carousel.stories.ts",
+                    "type": "CmsCarouselSlideConfig[]",
+                    "defaultValue": "[\r\n  {\r\n    text: {\r\n      title: 'First Slide',\r\n    },\r\n    background: {\r\n      image: {\r\n        url: `https://picsum.photos/id/944/1700/500`,\r\n        title: 'A metal bridge in the jungle',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    text: {\r\n      title: 'Second Slide',\r\n      subtitle: 'With a subtitle',\r\n    },\r\n    background: {\r\n      image: {\r\n        url: `https://picsum.photos/id/1011/1700/500`,\r\n        title: 'Woman canoeing',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    text: {\r\n      title: 'Third Slide',\r\n      subtitle: 'Background color instead of image',\r\n    },\r\n    background: {\r\n      color: 'blue',\r\n    },\r\n  },\r\n]"
+                }
+            ],
+            "src/storybook/html-editor.stories.ts": [
+                {
+                    "name": "BasicExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/html-editor.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: HtmlEditorComponent,\r\n  props: {\r\n    ocCookieName: 'ordercloud.token',\r\n    remoteCss:\r\n      'https://mgrstoragetest.azureedge.net/buyerweb/styles.e94215343d3493186ae1.css'\r\n  }\r\n})"
+                }
+            ],
             "src/app/components/carousel/carousel.component.ts": [
                 {
                     "name": "CMS_CAROUSEL_DEFAULT_OPTIONS",
@@ -1768,7 +1773,7 @@
                     "subtype": "variable",
                     "file": "src/app/components/carousel/carousel.component.ts",
                     "type": "CmsCarouselOptions",
-                    "defaultValue": "{\n  arrows: true,\n  indicators: true,\n  wrap: true,\n  interval: 5000,\n}"
+                    "defaultValue": "{\r\n  arrows: true,\r\n  indicators: true,\r\n  wrap: true,\r\n  interval: 5000,\r\n}"
                 }
             ],
             "src/test.ts": [
@@ -1788,16 +1793,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
-                    "type": "object",
-                    "defaultValue": "{\r\n  production: true\r\n}"
-                }
-            ],
             "src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -1806,6 +1801,16 @@
                     "file": "src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\r\n  production: false\r\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: true\r\n}"
                 }
             ]
         },
@@ -1929,7 +1934,7 @@
                 "linktype": "component",
                 "name": "HtmlEditorComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
