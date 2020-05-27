@@ -1,3 +1,3 @@
 export interface ContentDoc {
-    Type: string;
+    ComponentName: string;
 }

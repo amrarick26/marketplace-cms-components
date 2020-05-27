@@ -1,4 +1,6 @@
-export interface PageContentDoc {
+import { ContentDoc } from './ContentDoc.interface';
+
+export interface PageContentDoc extends ContentDoc {
     Url: string;
     SiteUrl: string;
     Title: string;
@@ -6,7 +8,6 @@ export interface PageContentDoc {
     MetaImageUrl: string;
     DateLastUpdated: string;
     Active: boolean;
-    ContentDocUrls: string[];
     Content: any[];
     HeaderEmbeds?: string
     FooterEmbeds?: string

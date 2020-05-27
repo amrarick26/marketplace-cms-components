@@ -1,8 +1,3 @@
-<!-- <cms-content-container 
-    *ngFor="let url of contentDocUrls" contentDocUrl="{{url}}">
-</cms-content-container> -->
-<h1>{{pageDoc.Title}}</h1>
-<p>{{pageDoc.Description}}</p>
 <cms-content-container 
-    *ngFor="let contentBlock of content" [content]="contentBlock">
+    *ngFor="let contentBlock of content.Content" [content]="contentBlock">
 </cms-content-container>

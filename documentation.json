@@ -1,0 +1,2238 @@
+{
+    "pipes": [
+        {
+            "name": "SafeHtmlPipe",
+            "id": "pipe-SafeHtmlPipe-944328e3cd10f22876454408406a54b2",
+            "file": "src/app/pipes/safe-html.pipe.ts",
+            "type": "pipe",
+            "description": "<p>By default angular sanitizes html and strips out things like\nstyles which we want to keep because it doesnt know if it can be trusted\nhowever we know this html is from a trusted source</p>\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "html",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 16,
+                    "jsdoctags": [
+                        {
+                            "name": "html",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "safeHtml",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\r\nimport { DomSanitizer } from '@angular/platform-browser';\r\n\r\n/**\r\n * By default angular sanitizes html and strips out things like\r\n * styles which we want to keep because it doesnt know if it can be trusted\r\n * however we know this html is from a trusted source\r\n */\r\n@Pipe({\r\n  name: 'safeHtml'\r\n})\r\nexport class SafeHtmlPipe implements PipeTransform {\r\n\r\n  constructor(private sanitizer: DomSanitizer) { }\r\n\r\n  transform(html) {\r\n    return this.sanitizer.bypassSecurityTrustHtml(html);\r\n  }\r\n}\r\n"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "Background",
+            "id": "interface-Background-107ac98da445040d8f4525a9ca35292e",
+            "file": "src/app/models/ContentBlockDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\n\r\nexport interface ContentBlockDoc extends ContentDoc {\r\n    Background: Background;\r\n    DateRange: DateRange;\r\n    HorizontalAlignment: 'Left' | 'Center' | 'Right';\r\n    VerticalAlignment: 'Top' | 'Middle' | 'Bottom';\r\n    Button?: ContentButton;\r\n    TextArea: string;\r\n}\r\n\r\ninterface Background {\r\n    ImageUrl: string; // assetID\r\n    Color: string;\r\n}\r\n\r\ninterface DateRange {\r\n    StartDate?: Date;\r\n    EndDate?: Date;\r\n}\r\n\r\ninterface ContentButton {\r\n    Text: string;\r\n    Link: string;\r\n    Color: string;\r\n    Outlined: boolean;\r\n    Variant: boolean;\r\n}",
+            "properties": [
+                {
+                    "name": "Color",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "ImageUrl",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "BootstrapCarouselOptions",
+            "id": "interface-BootstrapCarouselOptions-d05f0407abd34843ea546ddc58d6fef9",
+            "file": "src/app/models/CarouselContentDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\n// import { ContentBlock } from './ContentBlock.interface';\r\n\r\ntype BootstrapCarouselPauseOption =\r\n  | 'hover'\r\n  | 'mouseenter'\r\n  | 'mouseleave'\r\n  | false;\r\n\r\ntype BootstrapCarouselRideOption = 'carousel' | false;\r\n\r\ninterface BootstrapCarouselOptions {\r\n  interval: number;\r\n  keyboard: boolean;\r\n  pause: BootstrapCarouselPauseOption;\r\n  ride: BootstrapCarouselRideOption;\r\n  wrap: boolean;\r\n  touch: boolean;\r\n}\r\n\r\nexport interface CarouselContentDoc extends ContentDoc {\r\n  options: BootstrapCarouselOptions;\r\n  slides: string[]; //content doc urls\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "interval",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "keyboard",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "pause",
+                    "type": "BootstrapCarouselPauseOption",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "ride",
+                    "type": "BootstrapCarouselRideOption",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "touch",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "wrap",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CarouselContentDoc",
+            "id": "interface-CarouselContentDoc-d05f0407abd34843ea546ddc58d6fef9",
+            "file": "src/app/models/CarouselContentDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\n// import { ContentBlock } from './ContentBlock.interface';\r\n\r\ntype BootstrapCarouselPauseOption =\r\n  | 'hover'\r\n  | 'mouseenter'\r\n  | 'mouseleave'\r\n  | false;\r\n\r\ntype BootstrapCarouselRideOption = 'carousel' | false;\r\n\r\ninterface BootstrapCarouselOptions {\r\n  interval: number;\r\n  keyboard: boolean;\r\n  pause: BootstrapCarouselPauseOption;\r\n  ride: BootstrapCarouselRideOption;\r\n  wrap: boolean;\r\n  touch: boolean;\r\n}\r\n\r\nexport interface CarouselContentDoc extends ContentDoc {\r\n  options: BootstrapCarouselOptions;\r\n  slides: string[]; //content doc urls\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "options",
+                    "type": "BootstrapCarouselOptions",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "slides",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": [],
+            "extends": "ContentDoc"
+        },
+        {
+            "name": "CmsAsset",
+            "id": "interface-CmsAsset-ca7bd7da1cfa431930c76b236c5b166f",
+            "file": "src/app/models/CmsAssets.interface.ts",
+            "type": "interface",
+            "sourceCode": "export interface CmsAsset {\r\n  url: string;\r\n  title: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "title",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "url",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CmsBackground",
+            "id": "interface-CmsBackground-421514e558c85ca5ec861902298c407f",
+            "file": "src/app/models/CmsCarousel.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { CmsAsset } from './CmsAssets.interface';\r\n\r\nexport interface CmsBackground {\r\n  image?: CmsAsset;\r\n  color?: string | number;\r\n}\r\n\r\nexport interface CmsCarouselSlideTextConfig {\r\n  title?: string;\r\n  subtitle?: string;\r\n}\r\n\r\nexport interface CmsCarouselSlideConfig {\r\n  background?: CmsBackground;\r\n  text?: CmsCarouselSlideTextConfig;\r\n}\r\n\r\nexport interface CmsCarouselOptions {\r\n  arrows?: boolean;\r\n  indicators?: boolean;\r\n  wrap?: boolean;\r\n  interval?: number;\r\n  width?: number | string;\r\n  height?: number | string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "color",
+                    "type": "string | number",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "image",
+                    "type": "CmsAsset",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CmsCarouselOptions",
+            "id": "interface-CmsCarouselOptions-421514e558c85ca5ec861902298c407f",
+            "file": "src/app/models/CmsCarousel.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { CmsAsset } from './CmsAssets.interface';\r\n\r\nexport interface CmsBackground {\r\n  image?: CmsAsset;\r\n  color?: string | number;\r\n}\r\n\r\nexport interface CmsCarouselSlideTextConfig {\r\n  title?: string;\r\n  subtitle?: string;\r\n}\r\n\r\nexport interface CmsCarouselSlideConfig {\r\n  background?: CmsBackground;\r\n  text?: CmsCarouselSlideTextConfig;\r\n}\r\n\r\nexport interface CmsCarouselOptions {\r\n  arrows?: boolean;\r\n  indicators?: boolean;\r\n  wrap?: boolean;\r\n  interval?: number;\r\n  width?: number | string;\r\n  height?: number | string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "arrows",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "height",
+                    "type": "number | string",
+                    "optional": true,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "indicators",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "interval",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "width",
+                    "type": "number | string",
+                    "optional": true,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "wrap",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 21
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CmsCarouselSlideConfig",
+            "id": "interface-CmsCarouselSlideConfig-421514e558c85ca5ec861902298c407f",
+            "file": "src/app/models/CmsCarousel.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { CmsAsset } from './CmsAssets.interface';\r\n\r\nexport interface CmsBackground {\r\n  image?: CmsAsset;\r\n  color?: string | number;\r\n}\r\n\r\nexport interface CmsCarouselSlideTextConfig {\r\n  title?: string;\r\n  subtitle?: string;\r\n}\r\n\r\nexport interface CmsCarouselSlideConfig {\r\n  background?: CmsBackground;\r\n  text?: CmsCarouselSlideTextConfig;\r\n}\r\n\r\nexport interface CmsCarouselOptions {\r\n  arrows?: boolean;\r\n  indicators?: boolean;\r\n  wrap?: boolean;\r\n  interval?: number;\r\n  width?: number | string;\r\n  height?: number | string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "background",
+                    "type": "CmsBackground",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "text",
+                    "type": "CmsCarouselSlideTextConfig",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "CmsCarouselSlideTextConfig",
+            "id": "interface-CmsCarouselSlideTextConfig-421514e558c85ca5ec861902298c407f",
+            "file": "src/app/models/CmsCarousel.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { CmsAsset } from './CmsAssets.interface';\r\n\r\nexport interface CmsBackground {\r\n  image?: CmsAsset;\r\n  color?: string | number;\r\n}\r\n\r\nexport interface CmsCarouselSlideTextConfig {\r\n  title?: string;\r\n  subtitle?: string;\r\n}\r\n\r\nexport interface CmsCarouselSlideConfig {\r\n  background?: CmsBackground;\r\n  text?: CmsCarouselSlideTextConfig;\r\n}\r\n\r\nexport interface CmsCarouselOptions {\r\n  arrows?: boolean;\r\n  indicators?: boolean;\r\n  wrap?: boolean;\r\n  interval?: number;\r\n  width?: number | string;\r\n  height?: number | string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "subtitle",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "title",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ColumnContentDoc",
+            "id": "interface-ColumnContentDoc-93fb30a048e58a6dc1b62abf592833ef",
+            "file": "src/app/models/ColumnContentDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\n\r\nexport interface ColumnContentDoc extends ContentDoc {\r\n    Width?: number | BootstrapMediaDefinition\r\n    Padding?: 0 | 1 | 2 | 3 | 4 | 5 | 'auto';\r\n    Content: ContentDoc[]\r\n}\r\n\r\nexport type BootstrapBreakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'\r\nexport type BootstrapMediaDefinition = {\r\n    [key in BootstrapBreakpoint]?: number\r\n}",
+            "properties": [
+                {
+                    "name": "Content",
+                    "type": "ContentDoc[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "Padding",
+                    "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"auto\"",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "Width",
+                    "type": "number | BootstrapMediaDefinition",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": [],
+            "extends": "ContentDoc"
+        },
+        {
+            "name": "ContentBlockDoc",
+            "id": "interface-ContentBlockDoc-107ac98da445040d8f4525a9ca35292e",
+            "file": "src/app/models/ContentBlockDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\n\r\nexport interface ContentBlockDoc extends ContentDoc {\r\n    Background: Background;\r\n    DateRange: DateRange;\r\n    HorizontalAlignment: 'Left' | 'Center' | 'Right';\r\n    VerticalAlignment: 'Top' | 'Middle' | 'Bottom';\r\n    Button?: ContentButton;\r\n    TextArea: string;\r\n}\r\n\r\ninterface Background {\r\n    ImageUrl: string; // assetID\r\n    Color: string;\r\n}\r\n\r\ninterface DateRange {\r\n    StartDate?: Date;\r\n    EndDate?: Date;\r\n}\r\n\r\ninterface ContentButton {\r\n    Text: string;\r\n    Link: string;\r\n    Color: string;\r\n    Outlined: boolean;\r\n    Variant: boolean;\r\n}",
+            "properties": [
+                {
+                    "name": "Background",
+                    "type": "Background",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "Button",
+                    "type": "ContentButton",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "DateRange",
+                    "type": "DateRange",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "HorizontalAlignment",
+                    "type": "\"Left\" | \"Center\" | \"Right\"",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "TextArea",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "VerticalAlignment",
+                    "type": "\"Top\" | \"Middle\" | \"Bottom\"",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": [],
+            "extends": "ContentDoc"
+        },
+        {
+            "name": "ContentButton",
+            "id": "interface-ContentButton-107ac98da445040d8f4525a9ca35292e",
+            "file": "src/app/models/ContentBlockDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\n\r\nexport interface ContentBlockDoc extends ContentDoc {\r\n    Background: Background;\r\n    DateRange: DateRange;\r\n    HorizontalAlignment: 'Left' | 'Center' | 'Right';\r\n    VerticalAlignment: 'Top' | 'Middle' | 'Bottom';\r\n    Button?: ContentButton;\r\n    TextArea: string;\r\n}\r\n\r\ninterface Background {\r\n    ImageUrl: string; // assetID\r\n    Color: string;\r\n}\r\n\r\ninterface DateRange {\r\n    StartDate?: Date;\r\n    EndDate?: Date;\r\n}\r\n\r\ninterface ContentButton {\r\n    Text: string;\r\n    Link: string;\r\n    Color: string;\r\n    Outlined: boolean;\r\n    Variant: boolean;\r\n}",
+            "properties": [
+                {
+                    "name": "Color",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "Link",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "Outlined",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "Text",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "Variant",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ContentDoc",
+            "id": "interface-ContentDoc-cdb3cdb1221922b285143856f68aab37",
+            "file": "src/app/models/ContentDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "export interface ContentDoc {\r\n    ComponentName: string;\r\n}",
+            "properties": [
+                {
+                    "name": "ComponentName",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "DateRange",
+            "id": "interface-DateRange-107ac98da445040d8f4525a9ca35292e",
+            "file": "src/app/models/ContentBlockDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\n\r\nexport interface ContentBlockDoc extends ContentDoc {\r\n    Background: Background;\r\n    DateRange: DateRange;\r\n    HorizontalAlignment: 'Left' | 'Center' | 'Right';\r\n    VerticalAlignment: 'Top' | 'Middle' | 'Bottom';\r\n    Button?: ContentButton;\r\n    TextArea: string;\r\n}\r\n\r\ninterface Background {\r\n    ImageUrl: string; // assetID\r\n    Color: string;\r\n}\r\n\r\ninterface DateRange {\r\n    StartDate?: Date;\r\n    EndDate?: Date;\r\n}\r\n\r\ninterface ContentButton {\r\n    Text: string;\r\n    Link: string;\r\n    Color: string;\r\n    Outlined: boolean;\r\n    Variant: boolean;\r\n}",
+            "properties": [
+                {
+                    "name": "EndDate",
+                    "type": "Date",
+                    "optional": true,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "StartDate",
+                    "type": "Date",
+                    "optional": true,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "PageContentDoc",
+            "id": "interface-PageContentDoc-e7fd391bb95fe7680792f50f814c69a8",
+            "file": "src/app/models/PageContentDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\n\r\nexport interface PageContentDoc extends ContentDoc {\r\n    Url: string;\r\n    SiteUrl: string;\r\n    Title: string;\r\n    Description: string;\r\n    MetaImageUrl: string;\r\n    DateLastUpdated: string;\r\n    Active: boolean;\r\n    Content: any[];\r\n    HeaderEmbeds?: string\r\n    FooterEmbeds?: string\r\n    NavTitle?: string;\r\n}",
+            "properties": [
+                {
+                    "name": "Active",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "Content",
+                    "type": "any[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "DateLastUpdated",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "Description",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "FooterEmbeds",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "HeaderEmbeds",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "MetaImageUrl",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "NavTitle",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "SiteUrl",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "Title",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "Url",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": [],
+            "extends": "ContentDoc"
+        },
+        {
+            "name": "RowContentDoc",
+            "id": "interface-RowContentDoc-7a3134891888c616e2ae854ba7c5ffce",
+            "file": "src/app/models/RowContentDoc.interface.ts",
+            "type": "interface",
+            "sourceCode": "import { ContentDoc } from './ContentDoc.interface';\r\nimport { ColumnContentDoc } from './ColumnContentDoc.interface';\r\n\r\nexport interface RowContentDoc extends ContentDoc {\r\n    Content: ColumnContentDoc[]\r\n}",
+            "properties": [
+                {
+                    "name": "Content",
+                    "type": "ColumnContentDoc[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": [],
+            "extends": "ContentDoc"
+        }
+    ],
+    "injectables": [],
+    "classes": [
+        {
+            "name": "AppPage",
+            "id": "class-AppPage-b0dda38f970a6690b77b35dfb293b3ac",
+            "file": "e2e/src/app.po.ts",
+            "type": "class",
+            "sourceCode": "import { browser, by, element } from 'protractor';\r\n\r\nexport class AppPage {\r\n  navigateTo(): Promise<unknown> {\r\n    return browser.get(browser.baseUrl) as Promise<unknown>;\r\n  }\r\n\r\n  getTitleText(): Promise<string> {\r\n    return element(by.css('app-root .content span')).getText() as Promise<string>;\r\n  }\r\n}\r\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getTitleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<string>",
+                    "typeParameters": [],
+                    "line": 8
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<unknown>",
+                    "typeParameters": [],
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [
+        {
+            "name": "BgColorDirective",
+            "id": "directive-BgColorDirective-3f6968c7b19bf76ef49c83b500c6ec36",
+            "file": "src/app/directives/bg-color.directive.ts",
+            "type": "directive",
+            "description": "",
+            "sourceCode": "import { Directive, Input, ElementRef, OnInit } from '@angular/core';\nimport Color from 'color';\n\n@Directive({\n  selector: '[cmsBgColor]',\n})\nexport class BgColorDirective implements OnInit {\n  @Input() cmsBgColor?: string;\n  el: ElementRef;\n  constructor(el: ElementRef) {\n    this.el = el;\n  }\n\n  ngOnInit() {\n    if (this.cmsBgColor) {\n      try {\n        const color = new Color(this.cmsBgColor);\n        this.el.nativeElement.style.backgroundColor = color.hex();\n      } catch (ex) {\n        console.log(ex);\n        throw ex;\n      }\n    }\n  }\n}\n",
+            "selector": "[cmsBgColor]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "cmsBgColor",
+                    "line": 8,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "el",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14
+                }
+            ],
+            "implements": [
+                "OnInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef"
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-488b051154b2cfbf88e79bf7d02311c3",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'marketplace-cms-components'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  title = 'marketplace-cms-components';\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->\r\n<!-- * * * * * * * to get started with your project! * * * * * * * * -->\r\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\r\n\r\n<style>\r\n  :host {\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\r\n    font-size: 14px;\r\n    color: #333;\r\n    box-sizing: border-box;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n  }\r\n\r\n  h1,\r\n  h2,\r\n  h3,\r\n  h4,\r\n  h5,\r\n  h6 {\r\n    margin: 8px 0;\r\n  }\r\n\r\n  p {\r\n    margin: 0;\r\n  }\r\n\r\n  .spacer {\r\n    flex: 1;\r\n  }\r\n\r\n  .toolbar {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 60px;\r\n    display: flex;\r\n    align-items: center;\r\n    background-color: #1976d2;\r\n    color: white;\r\n    font-weight: 600;\r\n  }\r\n\r\n  .toolbar img {\r\n    margin: 0 16px;\r\n  }\r\n\r\n  .toolbar #twitter-logo {\r\n    height: 40px;\r\n    margin: 0 16px;\r\n  }\r\n\r\n  .toolbar #twitter-logo:hover {\r\n    opacity: 0.8;\r\n  }\r\n\r\n  .content {\r\n    display: flex;\r\n    margin: 82px auto 32px;\r\n    padding: 0 16px;\r\n    max-width: 960px;\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n\r\n  svg.material-icons {\r\n    height: 24px;\r\n    width: auto;\r\n  }\r\n\r\n  svg.material-icons:not(:last-child) {\r\n    margin-right: 8px;\r\n  }\r\n\r\n  .card svg.material-icons path {\r\n    fill: #888;\r\n  }\r\n\r\n  .card-container {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    justify-content: center;\r\n    margin-top: 16px;\r\n  }\r\n\r\n  .card {\r\n    border-radius: 4px;\r\n    border: 1px solid #eee;\r\n    background-color: #fafafa;\r\n    height: 40px;\r\n    width: 200px;\r\n    margin: 0 8px 16px;\r\n    padding: 16px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    transition: all 0.2s ease-in-out;\r\n    line-height: 24px;\r\n  }\r\n\r\n  .card-container .card:not(:last-child) {\r\n    margin-right: 0;\r\n  }\r\n\r\n  .card.card-small {\r\n    height: 16px;\r\n    width: 168px;\r\n  }\r\n\r\n  .card-container .card:not(.highlight-card) {\r\n    cursor: pointer;\r\n  }\r\n\r\n  .card-container .card:not(.highlight-card):hover {\r\n    transform: translateY(-3px);\r\n    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);\r\n  }\r\n\r\n  .card-container .card:not(.highlight-card):hover .material-icons path {\r\n    fill: rgb(105, 103, 103);\r\n  }\r\n\r\n  .card.highlight-card {\r\n    background-color: #1976d2;\r\n    color: white;\r\n    font-weight: 600;\r\n    border: none;\r\n    width: auto;\r\n    min-width: 30%;\r\n    position: relative;\r\n  }\r\n\r\n  .card.card.highlight-card span {\r\n    margin-left: 60px;\r\n  }\r\n\r\n  svg#rocket {\r\n    width: 80px;\r\n    position: absolute;\r\n    left: -10px;\r\n    top: -24px;\r\n  }\r\n\r\n  svg#rocket-smoke {\r\n    height: calc(100vh - 95px);\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 180px;\r\n    z-index: -10;\r\n  }\r\n\r\n  a,\r\n  a:visited,\r\n  a:hover {\r\n    color: #1976d2;\r\n    text-decoration: none;\r\n  }\r\n\r\n  a:hover {\r\n    color: #125699;\r\n  }\r\n\r\n  .terminal {\r\n    position: relative;\r\n    width: 80%;\r\n    max-width: 600px;\r\n    border-radius: 6px;\r\n    padding-top: 45px;\r\n    margin-top: 8px;\r\n    overflow: hidden;\r\n    background-color: rgb(15, 15, 16);\r\n  }\r\n\r\n  .terminal::before {\r\n    content: \"\\2022 \\2022 \\2022\";\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    height: 4px;\r\n    background: rgb(58, 58, 58);\r\n    color: #c2c3c4;\r\n    width: 100%;\r\n    font-size: 2rem;\r\n    line-height: 0;\r\n    padding: 14px 0;\r\n    text-indent: 4px;\r\n  }\r\n\r\n  .terminal pre {\r\n    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;\r\n    color: white;\r\n    padding: 0 1rem 1rem;\r\n    margin: 0;\r\n  }\r\n\r\n  .circle-link {\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 40px;\r\n    margin: 8px;\r\n    background-color: white;\r\n    border: 1px solid #eeeeee;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    cursor: pointer;\r\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n    transition: 1s ease-out;\r\n  }\r\n\r\n  .circle-link:hover {\r\n    transform: translateY(-0.25rem);\r\n    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\r\n  }\r\n\r\n  footer {\r\n    margin-top: 8px;\r\n    display: flex;\r\n    align-items: center;\r\n    line-height: 20px;\r\n  }\r\n\r\n  footer a {\r\n    display: flex;\r\n    align-items: center;\r\n  }\r\n\r\n  .github-star-badge {\r\n    color: #24292e;\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: 12px;\r\n    padding: 3px 10px;\r\n    border: 1px solid rgba(27,31,35,.2);\r\n    border-radius: 3px;\r\n    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);\r\n    margin-left: 4px;\r\n    font-weight: 600;\r\n    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;\r\n  }\r\n\r\n  .github-star-badge:hover {\r\n    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);\r\n    border-color: rgba(27,31,35,.35);\r\n    background-position: -.5em;\r\n  }\r\n\r\n  .github-star-badge .material-icons {\r\n    height: 16px;\r\n    width: 16px;\r\n    margin-right: 4px;\r\n  }\r\n\r\n  svg#clouds {\r\n    position: fixed;\r\n    bottom: -160px;\r\n    left: -230px;\r\n    z-index: -10;\r\n    width: 1920px;\r\n  }\r\n\r\n\r\n  /* Responsive Styles */\r\n  @media screen and (max-width: 767px) {\r\n\r\n    .card-container > *:not(.circle-link) ,\r\n    .terminal {\r\n      width: 100%;\r\n    }\r\n\r\n    .card:not(.highlight-card) {\r\n      height: 16px;\r\n      margin: 8px 0;\r\n    }\r\n\r\n    .card.highlight-card span {\r\n      margin-left: 72px;\r\n    }\r\n\r\n    svg#rocket-smoke {\r\n      right: 120px;\r\n      transform: rotate(-5deg);\r\n    }\r\n  }\r\n\r\n  @media screen and (max-width: 575px) {\r\n    svg#rocket-smoke {\r\n      display: none;\r\n      visibility: hidden;\r\n    }\r\n  }\r\n</style>\r\n\r\n<!-- Toolbar -->\r\n<div class=\"toolbar\" role=\"banner\">\r\n  <img\r\n    width=\"40\"\r\n    alt=\"Angular Logo\"\r\n    src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\"\r\n  />\r\n  <span>Welcome</span>\r\n    <div class=\"spacer\"></div>\r\n    <a aria-label=\"Angular on twitter\" target=\"_blank\" rel=\"noopener\" href=\"https://twitter.com/angular\" title=\"Twitter\">\r\n      <svg id=\"twitter-logo\" height=\"24\" data-name=\"Logo\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\">\r\n        <rect width=\"400\" height=\"400\" fill=\"none\"/>\r\n        <path d=\"M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23\" fill=\"#fff\"/>\r\n      </svg>\r\n    </a>\r\n</div>\r\n\r\n<div class=\"content\" role=\"main\">\r\n\r\n  <!-- Highlight Card -->\r\n  <div class=\"card highlight-card card-small\">\r\n\r\n    <svg id=\"rocket\" alt=\"Rocket Ship\" xmlns=\"http://www.w3.org/2000/svg\" width=\"101.678\" height=\"101.678\" viewBox=\"0 0 101.678 101.678\">\r\n      <g id=\"Group_83\" data-name=\"Group 83\" transform=\"translate(-141 -696)\">\r\n        <circle id=\"Ellipse_8\" data-name=\"Ellipse 8\" cx=\"50.839\" cy=\"50.839\" r=\"50.839\" transform=\"translate(141 696)\" fill=\"#dd0031\"/>\r\n        <g id=\"Group_47\" data-name=\"Group 47\" transform=\"translate(165.185 720.185)\">\r\n          <path id=\"Path_33\" data-name=\"Path 33\" d=\"M3.4,42.615a3.084,3.084,0,0,0,3.553,3.553,21.419,21.419,0,0,0,12.215-6.107L9.511,30.4A21.419,21.419,0,0,0,3.4,42.615Z\" transform=\"translate(0.371 3.363)\" fill=\"#fff\"/>\r\n          <path id=\"Path_34\" data-name=\"Path 34\" d=\"M53.3,3.221A3.09,3.09,0,0,0,50.081,0,48.227,48.227,0,0,0,18.322,13.437c-6-1.666-14.991-1.221-18.322,7.218A33.892,33.892,0,0,1,9.439,25.1l-.333.666a3.013,3.013,0,0,0,.555,3.553L23.985,43.641a2.9,2.9,0,0,0,3.553.555l.666-.333A33.892,33.892,0,0,1,32.647,53.3c8.55-3.664,8.884-12.326,7.218-18.322A48.227,48.227,0,0,0,53.3,3.221ZM34.424,9.772a6.439,6.439,0,1,1,9.106,9.106,6.368,6.368,0,0,1-9.106,0A6.467,6.467,0,0,1,34.424,9.772Z\" transform=\"translate(0 0.005)\" fill=\"#fff\"/>\r\n        </g>\r\n      </g>\r\n    </svg>\r\n\r\n    <span>{{ title }} app is running!</span>\r\n\r\n    <svg id=\"rocket-smoke\" alt=\"Rocket Ship Smoke\" xmlns=\"http://www.w3.org/2000/svg\" width=\"516.119\" height=\"1083.632\" viewBox=\"0 0 516.119 1083.632\">\r\n      <path id=\"Path_40\" data-name=\"Path 40\" d=\"M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z\" transform=\"translate(-147.025 -140.939)\" fill=\"#f5f5f5\"/>\r\n    </svg>\r\n\r\n  </div>\r\n\r\n  <!-- Resources -->\r\n  <h2>Resources</h2>\r\n  <p>Here are some links to help you get started:</p>\r\n\r\n  <div class=\"card-container\">\r\n    <a class=\"card\" target=\"_blank\" rel=\"noopener\" href=\"https://angular.io/tutorial\">\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z\"/></svg>\r\n\r\n      <span>Learn Angular</span>\r\n\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>    </a>\r\n\r\n    <a class=\"card\" target=\"_blank\" rel=\"noopener\" href=\"https://angular.io/cli\">\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z\"/></svg>\r\n\r\n      <span>CLI Documentation</span>\r\n\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>\r\n    </a>\r\n\r\n    <a class=\"card\" target=\"_blank\" rel=\"noopener\" href=\"https://blog.angular.io/\">\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z\"/></svg>\r\n\r\n      <span>Angular Blog</span>\r\n\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>\r\n    </a>\r\n\r\n  </div>\r\n\r\n  <!-- Next Steps -->\r\n  <h2>Next Steps</h2>\r\n  <p>What do you want to do next with your app?</p>\r\n\r\n  <input type=\"hidden\" #selection>\r\n\r\n  <div class=\"card-container\">\r\n    <div class=\"card card-small\" (click)=\"selection.value = 'component'\" tabindex=\"0\">\r\n        <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>\r\n\r\n      <span>New Component</span>\r\n    </div>\r\n\r\n    <div class=\"card card-small\" (click)=\"selection.value = 'material'\" tabindex=\"0\">\r\n        <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>\r\n\r\n      <span>Angular Material</span>\r\n    </div>\r\n\r\n    <div class=\"card card-small\" (click)=\"selection.value = 'pwa'\" tabindex=\"0\">\r\n        <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>\r\n\r\n      <span>Add PWA Support</span>\r\n    </div>\r\n\r\n    <div class=\"card card-small\" (click)=\"selection.value = 'dependency'\" tabindex=\"0\">\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>\r\n\r\n      <span>Add Dependency</span>\r\n    </div>\r\n\r\n    <div class=\"card card-small\" (click)=\"selection.value = 'test'\" tabindex=\"0\">\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>\r\n\r\n      <span>Run and Watch Tests</span>\r\n    </div>\r\n\r\n    <div class=\"card card-small\" (click)=\"selection.value = 'build'\" tabindex=\"0\">\r\n      <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>\r\n\r\n      <span>Build for Production</span>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Terminal -->\r\n  <div class=\"terminal\" [ngSwitch]=\"selection.value\">\r\n      <pre *ngSwitchDefault>ng generate component xyz</pre>\r\n      <pre *ngSwitchCase=\"'material'\">ng add @angular/material</pre>\r\n      <pre *ngSwitchCase=\"'pwa'\">ng add @angular/pwa</pre>\r\n      <pre *ngSwitchCase=\"'dependency'\">ng add _____</pre>\r\n      <pre *ngSwitchCase=\"'test'\">ng test</pre>\r\n      <pre *ngSwitchCase=\"'build'\">ng build --prod</pre>\r\n  </div>\r\n\r\n  <!-- Links -->\r\n  <div class=\"card-container\">\r\n    <a class=\"circle-link\" title=\"Animations\" href=\"https://angular.io/guide/animations\" target=\"_blank\" rel=\"noopener\">\r\n      <svg id=\"Group_20\" data-name=\"Group 20\" xmlns=\"http://www.w3.org/2000/svg\" width=\"21.813\" height=\"23.453\" viewBox=\"0 0 21.813 23.453\">\r\n        <path id=\"Path_15\" data-name=\"Path 15\" d=\"M4099.584,972.736h0l-10.882,3.9,1.637,14.4,9.245,5.153,9.245-5.153,1.686-14.4Z\" transform=\"translate(-4088.702 -972.736)\" fill=\"#ffa726\"/>\r\n        <path id=\"Path_16\" data-name=\"Path 16\" d=\"M4181.516,972.736v23.453l9.245-5.153,1.686-14.4Z\" transform=\"translate(-4170.633 -972.736)\" fill=\"#fb8c00\"/>\r\n        <path id=\"Path_17\" data-name=\"Path 17\" d=\"M4137.529,1076.127l-7.7-3.723,4.417-2.721,7.753,3.723Z\" transform=\"translate(-4125.003 -1058.315)\" fill=\"#ffe0b2\"/>\r\n        <path id=\"Path_18\" data-name=\"Path 18\" d=\"M4137.529,1051.705l-7.7-3.723,4.417-2.721,7.753,3.723Z\" transform=\"translate(-4125.003 -1036.757)\" fill=\"#fff3e0\"/>\r\n        <path id=\"Path_19\" data-name=\"Path 19\" d=\"M4137.529,1027.283l-7.7-3.723,4.417-2.721,7.753,3.723Z\" transform=\"translate(-4125.003 -1015.199)\" fill=\"#fff\"/>\r\n      </svg>\r\n    </a>\r\n\r\n    <a class=\"circle-link\" title=\"CLI\" href=\"https://cli.angular.io/\" target=\"_blank\" rel=\"noopener\">\r\n      <svg alt=\"Angular CLI Logo\" xmlns=\"http://www.w3.org/2000/svg\" width=\"21.762\" height=\"23.447\" viewBox=\"0 0 21.762 23.447\">\r\n        <g id=\"Group_21\" data-name=\"Group 21\" transform=\"translate(0)\">\r\n          <path id=\"Path_20\" data-name=\"Path 20\" d=\"M2660.313,313.618h0l-10.833,3.9,1.637,14.4,9.2,5.152,9.244-5.152,1.685-14.4Z\" transform=\"translate(-2649.48 -313.618)\" fill=\"#37474f\"/>\r\n          <path id=\"Path_21\" data-name=\"Path 21\" d=\"M2741.883,313.618v23.447l9.244-5.152,1.685-14.4Z\" transform=\"translate(-2731.05 -313.618)\" fill=\"#263238\"/>\r\n          <path id=\"Path_22\" data-name=\"Path 22\" d=\"M2692.293,379.169h11.724V368.618h-11.724Zm11.159-.6h-10.608v-9.345h10.621v9.345Z\" transform=\"translate(-2687.274 -362.17)\" fill=\"#fff\"/>\r\n          <path id=\"Path_23\" data-name=\"Path 23\" d=\"M2709.331,393.688l.4.416,2.265-2.28-2.294-2.294-.4.4,1.893,1.893Z\" transform=\"translate(-2702.289 -380.631)\" fill=\"#fff\"/>\r\n          <rect id=\"Rectangle_12\" data-name=\"Rectangle 12\" width=\"3.517\" height=\"0.469\" transform=\"translate(9.709 13.744)\" fill=\"#fff\"/>\r\n        </g>\r\n      </svg>\r\n    </a>\r\n\r\n    <a class=\"circle-link\" title=\"Augury\" href=\"https://augury.rangle.io/\" target=\"_blank\" rel=\"noopener\">\r\n      <svg alt=\"Angular Augury Logo\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"21.81\" height=\"23.447\" viewBox=\"0 0 21.81 23.447\">\r\n        <defs>\r\n          <clipPath id=\"clip-path\">\r\n            <rect id=\"Rectangle_13\" data-name=\"Rectangle 13\" width=\"10.338\" height=\"10.27\" fill=\"none\"/>\r\n          </clipPath>\r\n        </defs>\r\n        <g id=\"Group_25\" data-name=\"Group 25\" transform=\"translate(0)\">\r\n          <path id=\"Path_24\" data-name=\"Path 24\" d=\"M3780.155,311.417h0l-10.881,3.9,1.637,14.4,9.244,5.152,9.244-5.152,1.685-14.4Z\" transform=\"translate(-3769.274 -311.417)\" fill=\"#4a3493\"/>\r\n          <path id=\"Path_25\" data-name=\"Path 25\" d=\"M3862.088,311.417v23.447l9.244-5.152,1.685-14.4Z\" transform=\"translate(-3851.207 -311.417)\" fill=\"#311b92\"/>\r\n          <g id=\"Group_24\" data-name=\"Group 24\" transform=\"translate(6.194 6.73)\" opacity=\"0.5\">\r\n            <g id=\"Group_23\" data-name=\"Group 23\" transform=\"translate(0 0)\">\r\n              <g id=\"Group_22\" data-name=\"Group 22\" clip-path=\"url(#clip-path)\">\r\n                <path id=\"Path_26\" data-name=\"Path 26\" d=\"M3832.4,373.252a5.168,5.168,0,1,1-5.828-4.383,5.216,5.216,0,0,1,2.574.3,3.017,3.017,0,1,0,3.252,4.086Z\" transform=\"translate(-3822.107 -368.821)\" fill=\"#fff\"/>\r\n              </g>\r\n            </g>\r\n          </g>\r\n          <path id=\"Path_27\" data-name=\"Path 27\" d=\"M3830.582,370.848a5.162,5.162,0,1,1-3.254-4.086,3.017,3.017,0,1,0,3.252,4.086Z\" transform=\"translate(-3814.311 -359.969)\" fill=\"#fff\"/>\r\n        </g>\r\n      </svg>\r\n    </a>\r\n\r\n    <a class=\"circle-link\" title=\"Protractor\" href=\"https://www.protractortest.org/\" target=\"_blank\" rel=\"noopener\">\r\n      <svg alt=\"Angular Protractor Logo\" xmlns=\"http://www.w3.org/2000/svg\" width=\"21.81\" height=\"23.447\" viewBox=\"0 0 21.81 23.447\">\r\n        <g id=\"Group_26\" data-name=\"Group 26\" transform=\"translate(0)\">\r\n          <path id=\"Path_28\" data-name=\"Path 28\" d=\"M4620.155,311.417h0l-10.881,3.9,1.637,14.4,9.244,5.152,9.244-5.152,1.685-14.4Z\" transform=\"translate(-4609.274 -311.417)\" fill=\"#e13439\"/>\r\n          <path id=\"Path_29\" data-name=\"Path 29\" d=\"M4702.088,311.417v23.447l9.244-5.152,1.685-14.4Z\" transform=\"translate(-4691.207 -311.417)\" fill=\"#b52f32\"/>\r\n          <path id=\"Path_30\" data-name=\"Path 30\" d=\"M4651.044,369.58v-.421h1.483a7.6,7.6,0,0,0-2.106-5.052l-1.123,1.123-.3-.3,1.122-1.121a7.588,7.588,0,0,0-4.946-2.055v1.482h-.421v-1.485a7.589,7.589,0,0,0-5.051,2.058l1.122,1.121-.3.3-1.123-1.123a7.591,7.591,0,0,0-2.106,5.052h1.482v.421h-1.489v1.734h15.241V369.58Zm-10.966-.263a4.835,4.835,0,0,1,9.67,0Z\" transform=\"translate(-4634.008 -355.852)\" fill=\"#fff\"/>\r\n        </g>\r\n      </svg>\r\n    </a>\r\n\r\n    <a class=\"circle-link\" title=\"Find a Local Meetup\" href=\"https://www.meetup.com/find/?keywords=angular\" target=\"_blank\" rel=\"noopener\">\r\n      <svg alt=\"Meetup Logo\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24.607\" height=\"23.447\" viewBox=\"0 0 24.607 23.447\">\r\n        <path id=\"logo--mSwarm\" d=\"M21.221,14.95A4.393,4.393,0,0,1,17.6,19.281a4.452,4.452,0,0,1-.8.069c-.09,0-.125.035-.154.117a2.939,2.939,0,0,1-2.506,2.091,2.868,2.868,0,0,1-2.248-.624.168.168,0,0,0-.245-.005,3.926,3.926,0,0,1-2.589.741,4.015,4.015,0,0,1-3.7-3.347,2.7,2.7,0,0,1-.043-.38c0-.106-.042-.146-.143-.166a3.524,3.524,0,0,1-1.516-.69A3.623,3.623,0,0,1,2.23,14.557a3.66,3.66,0,0,1,1.077-3.085.138.138,0,0,0,.026-.2,3.348,3.348,0,0,1-.451-1.821,3.46,3.46,0,0,1,2.749-3.28.44.44,0,0,0,.355-.281,5.072,5.072,0,0,1,3.863-3,5.028,5.028,0,0,1,3.555.666.31.31,0,0,0,.271.03A4.5,4.5,0,0,1,18.3,4.7a4.4,4.4,0,0,1,1.334,2.751,3.658,3.658,0,0,1,.022.706.131.131,0,0,0,.1.157,2.432,2.432,0,0,1,1.574,1.645,2.464,2.464,0,0,1-.7,2.616c-.065.064-.051.1-.014.166A4.321,4.321,0,0,1,21.221,14.95ZM13.4,14.607a2.09,2.09,0,0,0,1.409,1.982,4.7,4.7,0,0,0,1.275.221,1.807,1.807,0,0,0,.9-.151.542.542,0,0,0,.321-.545.558.558,0,0,0-.359-.534,1.2,1.2,0,0,0-.254-.078c-.262-.047-.526-.086-.787-.138a.674.674,0,0,1-.617-.75,3.394,3.394,0,0,1,.218-1.109c.217-.658.509-1.286.79-1.918a15.609,15.609,0,0,0,.745-1.86,1.95,1.95,0,0,0,.06-1.073,1.286,1.286,0,0,0-1.051-1.033,1.977,1.977,0,0,0-1.521.2.339.339,0,0,1-.446-.042c-.1-.092-.2-.189-.307-.284a1.214,1.214,0,0,0-1.643-.061,7.563,7.563,0,0,1-.614.512A.588.588,0,0,1,10.883,8c-.215-.115-.437-.215-.659-.316a2.153,2.153,0,0,0-.695-.248A2.091,2.091,0,0,0,7.541,8.562a9.915,9.915,0,0,0-.405.986c-.559,1.545-1.015,3.123-1.487,4.7a1.528,1.528,0,0,0,.634,1.777,1.755,1.755,0,0,0,1.5.211,1.35,1.35,0,0,0,.824-.858c.543-1.281,1.032-2.584,1.55-3.875.142-.355.28-.712.432-1.064a.548.548,0,0,1,.851-.24.622.622,0,0,1,.185.539,2.161,2.161,0,0,1-.181.621c-.337.852-.68,1.7-1.018,2.552a2.564,2.564,0,0,0-.173.528.624.624,0,0,0,.333.71,1.073,1.073,0,0,0,.814.034,1.22,1.22,0,0,0,.657-.655q.758-1.488,1.511-2.978.35-.687.709-1.37a1.073,1.073,0,0,1,.357-.434.43.43,0,0,1,.463-.016.373.373,0,0,1,.153.387.7.7,0,0,1-.057.236c-.065.157-.127.316-.2.469-.42.883-.846,1.763-1.262,2.648A2.463,2.463,0,0,0,13.4,14.607Zm5.888,6.508a1.09,1.09,0,0,0-2.179.006,1.09,1.09,0,0,0,2.179-.006ZM1.028,12.139a1.038,1.038,0,1,0,.01-2.075,1.038,1.038,0,0,0-.01,2.075ZM13.782.528a1.027,1.027,0,1,0-.011,2.055A1.027,1.027,0,0,0,13.782.528ZM22.21,6.95a.882.882,0,0,0-1.763.011A.882.882,0,0,0,22.21,6.95ZM4.153,4.439a.785.785,0,1,0,.787-.78A.766.766,0,0,0,4.153,4.439Zm8.221,18.22a.676.676,0,1,0-.677.666A.671.671,0,0,0,12.374,22.658ZM22.872,12.2a.674.674,0,0,0-.665.665.656.656,0,0,0,.655.643.634.634,0,0,0,.655-.644A.654.654,0,0,0,22.872,12.2ZM7.171-.123A.546.546,0,0,0,6.613.43a.553.553,0,1,0,1.106,0A.539.539,0,0,0,7.171-.123ZM24.119,9.234a.507.507,0,0,0-.493.488.494.494,0,0,0,.494.494.48.48,0,0,0,.487-.483A.491.491,0,0,0,24.119,9.234Zm-19.454,9.7a.5.5,0,0,0-.488-.488.491.491,0,0,0-.487.5.483.483,0,0,0,.491.479A.49.49,0,0,0,4.665,18.936Z\" transform=\"translate(0 0.123)\" fill=\"#f64060\"/>\r\n      </svg>\r\n    </a>\r\n\r\n    <a class=\"circle-link\" title=\"Join the Conversation on Gitter\" href=\"https://gitter.im/angular/angular\" target=\"_blank\" rel=\"noopener\">\r\n      <svg alt=\"Gitter Logo\" xmlns=\"http://www.w3.org/2000/svg\" width=\"19.447\" height=\"19.447\" viewBox=\"0 0 19.447 19.447\">\r\n        <g id=\"Group_40\" data-name=\"Group 40\" transform=\"translate(-1612 -405)\">\r\n          <rect id=\"Rectangle_19\" data-name=\"Rectangle 19\" width=\"19.447\" height=\"19.447\" transform=\"translate(1612 405)\" fill=\"#e60257\"/>\r\n          <g id=\"gitter\" transform=\"translate(1617.795 408.636)\">\r\n            <g id=\"Group_33\" data-name=\"Group 33\" transform=\"translate(0 0)\">\r\n              <rect id=\"Rectangle_15\" data-name=\"Rectangle 15\" width=\"1.04\" height=\"9.601\" transform=\"translate(2.304 2.324)\" fill=\"#fff\"/>\r\n              <rect id=\"Rectangle_16\" data-name=\"Rectangle 16\" width=\"1.04\" height=\"9.601\" transform=\"translate(4.607 2.324)\" fill=\"#fff\"/>\r\n              <rect id=\"Rectangle_17\" data-name=\"Rectangle 17\" width=\"1.04\" height=\"4.648\" transform=\"translate(6.91 2.324)\" fill=\"#fff\"/>\r\n              <rect id=\"Rectangle_18\" data-name=\"Rectangle 18\" width=\"1.04\" height=\"6.971\" transform=\"translate(0 0)\" fill=\"#fff\"/>\r\n            </g>\r\n          </g>\r\n        </g>\r\n      </svg>\r\n    </a>\r\n  </div>\r\n\r\n  <!-- Footer -->\r\n  <footer>\r\n      Love Angular?&nbsp;\r\n      <a href=\"https://github.com/angular/angular\" target=\"_blank\" rel=\"noopener\"> Give our repo a star.\r\n        <div class=\"github-star-badge\">\r\n            <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>\r\n          Star\r\n        </div>\r\n      </a>\r\n      <a href=\"https://github.com/angular/angular\" target=\"_blank\" rel=\"noopener\">\r\n        <svg class=\"material-icons\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\" fill=\"#1976d2\"/><path d=\"M0 0h24v24H0z\" fill=\"none\"/></svg>\r\n      </a>\r\n  </footer>\r\n\r\n  <svg id=\"clouds\" alt=\"Gray Clouds Background\" xmlns=\"http://www.w3.org/2000/svg\" width=\"2611.084\" height=\"485.677\" viewBox=\"0 0 2611.084 485.677\">\r\n    <path id=\"Path_39\" data-name=\"Path 39\" d=\"M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z\" transform=\"translate(142.69 -634.312)\" fill=\"#eee\"/>\r\n  </svg>\r\n\r\n</div>\r\n\r\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->\r\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\r\n\r\n\r\n"
+        },
+        {
+            "name": "CarouselComponent",
+            "id": "component-CarouselComponent-46cc5ee0b149ff35f82c8402e2a1442b",
+            "file": "src/app/components/carousel/carousel.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cms-carousel",
+            "styleUrls": [
+                "./carousel.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./carousel.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "options",
+                    "line": 21,
+                    "type": "CmsCarouselOptions"
+                },
+                {
+                    "name": "slides",
+                    "line": 20,
+                    "type": "CmsCarouselSlideConfig[]"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\nimport {\n  CmsCarouselOptions,\n  CmsCarouselSlideConfig,\n} from 'src/app/models/CmsCarousel.interface';\n\nexport const CMS_CAROUSEL_DEFAULT_OPTIONS: CmsCarouselOptions = {\n  arrows: true,\n  indicators: true,\n  wrap: true,\n  interval: 5000,\n};\n\n@Component({\n  selector: 'cms-carousel',\n  templateUrl: './carousel.component.html',\n  styleUrls: ['./carousel.component.scss'],\n})\nexport class CarouselComponent implements OnInit {\n  @Input() slides: CmsCarouselSlideConfig[];\n  @Input() options?: CmsCarouselOptions;\n\n  constructor() {}\n\n  ngOnInit(): void {\n    this.options = { ...CMS_CAROUSEL_DEFAULT_OPTIONS, ...this.options };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\r\n  display: block;\r\n}\r\n\r\n.cms-carousel-slide-bg {\r\n  position: relative;\r\n  height: 0;\r\n  padding-top: 29.4%;\r\n\r\n  &>img {\r\n    width: 100%;\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./carousel.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 21
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<ngb-carousel\n  *ngIf=\"slides\"\n  class=\"carousel-fade\"\n  [interval]=\"options.interval\"\n  [showNavigationArrows]=\"options.arrows\"\n  [showNavigationIndicators]=\"options.indicators\"\n  [wrap]=\"options.wrap\"\n>\n  <ng-template *ngFor=\"let slide of slides\" ngbSlide>\n    <div\n      *ngIf=\"slide.background\"\n      class=\"cms-carousel-slide-bg\"\n      [cmsBgColor]=\"slide.background.color\"\n    >\n      <img\n        *ngIf=\"slide.background.image\"\n        [src]=\"slide.background.image.url\"\n        [alt]=\"slide.background.image.title\"\n      />\n    </div>\n    <div *ngIf=\"slide.text\" class=\"carousel-caption\">\n      <h3 *ngIf=\"slide.text.title\">{{ slide.text.title }}</h3>\n      <p *ngIf=\"slide.text.subtitle\">{{ slide.text.subtitle }}</p>\n    </div>\n  </ng-template>\n</ngb-carousel>\n"
+        },
+        {
+            "name": "ColumnComponent",
+            "id": "component-ColumnComponent-36c1f59fc855e855a77b67206e89e522",
+            "file": "src/app/components/column/column.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cms-column",
+            "styleUrls": [
+                "./column.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./column.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "content",
+                    "line": 10,
+                    "type": "ColumnContentDoc"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getPaddingClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{}",
+                    "typeParameters": [],
+                    "line": 45
+                },
+                {
+                    "name": "getWidthClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{}",
+                    "typeParameters": [],
+                    "line": 24
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21
+                }
+            ],
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "line": 12
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input, HostBinding } from '@angular/core';\r\nimport { ColumnContentDoc, BootstrapMediaDefinition } from 'src/app/models/ColumnContentDoc.interface';\r\n\r\n@Component({\r\n  selector: 'cms-column',\r\n  templateUrl: './column.component.html',\r\n  styleUrls: ['./column.component.scss']\r\n})\r\nexport class ColumnComponent implements OnInit {\r\n  @Input() content: ColumnContentDoc;\r\n  @HostBinding('class') \r\n  get getColumnClass(){\r\n    const widthClasses = this.getWidthClasses();\r\n    const paddingClasses = this.getPaddingClasses();\r\n\r\n    return [...widthClasses, ...paddingClasses].join(' ');\r\n  };\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  getWidthClasses() {\r\n    const definition = this.content.Width;\r\n    if(!definition) {\r\n      return ['col'];\r\n    }\r\n    if(typeof definition === 'number') {\r\n      return [`col-${definition}`];\r\n    }\r\n    let classNames: string[] = []\r\n    for(const breakpoint in definition){\r\n      const columnWidth = definition[breakpoint];\r\n      let className = `col-${breakpoint}-${columnWidth}`\r\n      if(breakpoint === 'xs') {\r\n        // there isn't actually an xs in bootstrap\r\n        className = `col-${columnWidth}`\r\n      }\r\n      classNames.push(className)\r\n    }\r\n    return classNames;\r\n  }\r\n\r\n  getPaddingClasses() {\r\n    const padding = this.content.Padding;\r\n    if(padding === null || padding === undefined) {\r\n      return [];\r\n    }\r\n    return [`p-${padding}`]\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./column.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 17
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<cms-content-container\r\n    *ngFor=\"let content of content.Content\"\r\n    [content]=\"content\">\r\n</cms-content-container>"
+        },
+        {
+            "name": "ContentBlockComponent",
+            "id": "component-ContentBlockComponent-b37b1ca69858f62b79dca19ddf8d4ad3",
+            "file": "src/app/components/content-block/content-block.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cms-content-block",
+            "styleUrls": [
+                "./content-block.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./content-block.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "content",
+                    "line": 10,
+                    "type": "ContentBlockDoc"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\nimport { ContentBlockDoc } from 'src/app/models/ContentBlockDoc.interface';\r\n\r\n@Component({\r\n  selector: 'cms-content-block',\r\n  templateUrl: './content-block.component.html',\r\n  styleUrls: ['./content-block.component.scss'],\r\n})\r\nexport class ContentBlockComponent implements OnInit {\r\n  @Input() content: ContentBlockDoc;\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {\r\n  }\r\n}\r\n\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./content-block.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 10
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div [ngStyle]=\"{'background-color': content?.Background?.Color}\">\r\n    <div [innerHtml]=\"content.TextArea | safeHtml\"></div>\r\n    <img src=\"{{content.ImageUrl}}\" style=\"max-height: 100px;\" alt=\"{{content.Title}}\">\r\n</div>"
+        },
+        {
+            "name": "ContentContainerComponent",
+            "id": "component-ContentContainerComponent-a756213a4bfee5e9997f0652b3aa1c04",
+            "file": "src/app/components/content-container/content-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cms-content-container",
+            "styleUrls": [
+                "./content-container.component.scss"
+            ],
+            "styles": [],
+            "template": "<ng-template #container></ng-template>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "content",
+                    "line": 11,
+                    "type": "ContentBlockDoc"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "alive",
+                    "defaultValue": "true",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "container",
+                    "type": "ViewContainerRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'container', {read: ViewContainerRef}"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24
+                },
+                {
+                    "name": "renderComponent",
+                    "args": [
+                        {
+                            "name": "componentName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "content",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "jsdoctags": [
+                        {
+                            "name": "componentName",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "content",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, Type, OnDestroy, AfterViewInit } from '@angular/core';\r\nimport { ContentBlockDoc } from 'src/app/models/ContentBlockDoc.interface';\r\n\r\n@Component({\r\n  selector: 'cms-content-container',\r\n  template: '<ng-template #container></ng-template>',\r\n  styleUrls: ['./content-container.component.scss']\r\n})\r\nexport class ContentContainerComponent implements OnDestroy, AfterViewInit {\r\n  @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef\r\n  @Input() content: ContentBlockDoc;\r\n  alive = true;\r\n\r\n  constructor(\r\n    private resolver: ComponentFactoryResolver\r\n  ) { }\r\n\r\n  ngAfterViewInit() {\r\n    setTimeout(() => {\r\n      this.renderComponent(this.content.ComponentName, this.content);\r\n    })\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    // unsubscribe when component is destroyed to prevent memory leak\r\n    this.alive = false;\r\n  }\r\n\r\n  renderComponent(componentName: string, content: any): void {\r\n    // dynamically renders component\r\n    const factories = Array.from(this.resolver['_factories'].keys());\r\n    const factoryClass = <Type<any>>factories.find((x: any) => x.name === componentName);\r\n    const factory = this.resolver.resolveComponentFactory(factoryClass);\r\n    const componentRef = this.container.createComponent(factory);\r\n\r\n    // add content to component instance\r\n    componentRef.instance.content = content;\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./content-container.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "resolver",
+                        "type": "ComponentFactoryResolver"
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "resolver",
+                        "type": "ComponentFactoryResolver",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnDestroy",
+                "AfterViewInit"
+            ]
+        },
+        {
+            "name": "HtmlEditorComponent",
+            "id": "component-HtmlEditorComponent-3ef091e9ac93a4ef4bfb9caf3ab2d291",
+            "file": "src/app/components/html-editor/html-editor.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cms-html-editor",
+            "styleUrls": [
+                "./html-editor.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./html-editor.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "ocCookieName",
+                    "line": 10,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\nimport { OcTokenService } from '@ordercloud/angular-sdk';\r\n\r\n@Component({\r\n  selector: 'cms-html-editor',\r\n  templateUrl: './html-editor.component.html',\r\n  styleUrls: ['./html-editor.component.scss']\r\n})\r\nexport class HtmlEditorComponent implements OnInit {\r\n  @Input() ocCookieName: string;\r\n\r\n  constructor(private ocTokenService: OcTokenService) {}\r\n\r\n  ngOnInit(): void {\r\n    this.ocTokenService.SetAccess(\r\n      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJhcmFyaWNrXzJAZm91cjUxLmNvbSIsImNpZCI6ImNlMDk1YTMwLWJlZmYtNGVkYy1iOTYwLTZiMDhmZjg4NDNmZSIsInUiOiIxMTgxMjQ3IiwidXNydHlwZSI6ImFkbWluIiwicm9sZSI6WyJBZGRyZXNzQWRtaW4iLCJNZUFkbWluIiwiT3JkZXJBZG1pbiIsIk92ZXJyaWRlU2hpcHBpbmciLCJPdmVycmlkZVRheCIsIk92ZXJyaWRlVW5pdFByaWNlIiwiUHJvZHVjdEFkbWluIiwiUGFzc3dvcmRSZXNldCIsIlNldFNlY3VyaXR5UHJvZmlsZSIsIlByaWNlU2NoZWR1bGVBZG1pbiIsIlN1cHBsaWVyQWRtaW4iLCJTdXBwbGllclVzZXJBZG1pbiIsIlN1cHBsaWVyQWRkcmVzc0FkbWluIiwiU2hvcHBlciIsIlNoaXBtZW50QWRtaW4iLCJTdXBwbGllclJlYWRlciIsIlByb21vdGlvbkFkbWluIiwiQnV5ZXJSZWFkZXIiLCJCdXllckFkbWluIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTU5MDYxNzcxNCwibmJmIjoxNTkwNTg3NzE0fQ.IjDUzDyW4KJvFlJu8pPL4ZMtVzh6ze1g01FrCKOyvxI'\r\n    );\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./html-editor.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "ocTokenService",
+                        "type": "OcTokenService"
+                    }
+                ],
+                "line": 10,
+                "jsdoctags": [
+                    {
+                        "name": "ocTokenService",
+                        "type": "OcTokenService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<editor\r\n  [init]=\"{\r\n    base_url: '/tinymce',\r\n    suffix: '.min',\r\n    height: 500,\r\n    menubar: false,\r\n    plugins: [\r\n      'table oc-product advlist autolink lists link image charmap print preview anchor',\r\n      'searchreplace visualblocks code fullscreen',\r\n      'insertdatetime media table paste code help wordcount'\r\n    ],\r\n    toolbar:\r\n      'oc-product undo redo | formatselect | bold italic backcolor | \\\r\n      alignleft aligncenter alignright alignjustify | \\\r\n      bullist numlist outdent indent table | removeformat | help',\r\n    ocCookieName: ocCookieName\r\n  }\"\r\n></editor>\r\n"
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-58b798c60d7f54a9fca8e2527dbf48bd",
+            "file": "src/app/components/page/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cms-page",
+            "styleUrls": [
+                "./page.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./page.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "content",
+                    "line": 16,
+                    "type": "PageContentDoc"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "createScriptTag",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "string"
+                        },
+                        {
+                            "name": "appendTo",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 69,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "appendTo",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "loadScripts",
+                    "args": [
+                        {
+                            "name": "headerEmbeds",
+                            "type": ""
+                        },
+                        {
+                            "name": "footerEmbeds",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "headerEmbeds",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "footerEmbeds",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25
+                },
+                {
+                    "name": "setMetaData",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "PageContentDoc"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "PageContentDoc",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "shouldShowContent",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "PageContentDoc"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 34,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "PageContentDoc",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>This component is responsible for dynamically rendering all of the components defined in <code>Content</code>\nas well as setting metadata important for SEO</p>\n",
+            "rawdescription": "This component is responsible for dynamically rendering all of the components defined in `Content`\r\nas well as setting metadata important for SEO",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input, Renderer2, Inject } from '@angular/core';\r\nimport { DOCUMENT } from '@angular/common';\r\nimport { Meta, Title } from '@angular/platform-browser';\r\nimport { PageContentDoc } from '../../models/PageContentDoc.interface';\r\n\r\n/**\r\n * This component is responsible for dynamically rendering all of the components defined in `Content`\r\n * as well as setting metadata important for SEO\r\n */\r\n@Component({\r\n  selector: 'cms-page',\r\n  templateUrl: './page.component.html',\r\n  styleUrls: ['./page.component.scss']\r\n})\r\nexport class PageComponent implements OnInit {\r\n  @Input() content: PageContentDoc;\r\n\r\n  constructor(\r\n    private metaService: Meta,\r\n    private titleService: Title,\r\n    private renderer: Renderer2,\r\n    @Inject(DOCUMENT) private document: HTMLDocument\r\n  ) { }\r\n\r\n  ngOnInit(): void {\r\n    if (!this.shouldShowContent(this.content)) {\r\n      // this is an extra check, but should be handled at a higher level ideally\r\n      return console.warn('Page can not be displayed. Please ensure:\\n1. Page is active\\n2. Page has content doc urls\\n3. Page Url matches path of current url')\r\n    }\r\n    this.setMetaData(this.content);\r\n    this.loadScripts(this.content.HeaderEmbeds, this.content.FooterEmbeds);\r\n  }\r\n\r\n  private shouldShowContent(content: PageContentDoc): boolean {\r\n    return Boolean(\r\n      content &&\r\n      content.Active &&\r\n      content.Content\r\n    )\r\n  }\r\n\r\n  private setMetaData(content: PageContentDoc) {\r\n    // addTag results in dupes, so we use updateTag instead\r\n\r\n    // normal metadata\r\n    this.titleService.setTitle(content.Title);\r\n    this.metaService.updateTag({ property: 'application-name', content: content.SiteUrl })\r\n    this.metaService.updateTag({ property: 'description', content: content.Description })\r\n\r\n    // open graph meta data\r\n    this.metaService.updateTag({property: 'og:type', content: 'website'})\r\n    this.metaService.updateTag({property: 'og:title', content: content.Title})\r\n    this.metaService.updateTag({property: 'og:description', content: content.Description})\r\n    this.metaService.updateTag({property: 'og:image', content: content.MetaImageUrl})\r\n\r\n    // twitter metadata\r\n    this.metaService.updateTag({ property: 'twitter:card', content: 'summary' })\r\n    this.metaService.updateTag({ property: 'twitter:site', content: content.SiteUrl })\r\n    this.metaService.updateTag({ property: 'twitter:title', content: content.Title })\r\n    this.metaService.updateTag({ property: 'twitter:description', content: content.Description })\r\n    this.metaService.updateTag({property: 'twitter:image', content: content.MetaImageUrl})\r\n  }\r\n\r\n  private loadScripts(headerEmbeds, footerEmbeds) {\r\n    this.createScriptTag(headerEmbeds, 'head');\r\n    this.createScriptTag(footerEmbeds, 'body');\r\n  }\r\n\r\n  private createScriptTag(content: string, appendTo: string): void {\r\n    // create script\r\n    const script = this.renderer.createElement('script');\r\n    script.type = 'text/javascript';\r\n    script.textContent = content;\r\n\r\n    // append to target element\r\n    const target = this.document.getElementsByTagName(appendTo)[0];\r\n    this.renderer.appendChild(target, script);\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./page.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "metaService",
+                        "type": "Meta"
+                    },
+                    {
+                        "name": "titleService",
+                        "type": "Title"
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2"
+                    },
+                    {
+                        "name": "document",
+                        "type": "HTMLDocument"
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "metaService",
+                        "type": "Meta",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "titleService",
+                        "type": "Title",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "document",
+                        "type": "HTMLDocument",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<cms-content-container \r\n    *ngFor=\"let contentBlock of content.Content\" [content]=\"contentBlock\">\r\n</cms-content-container>"
+        },
+        {
+            "name": "RowComponent",
+            "id": "component-RowComponent-4590da724363ef6b38e271452240a4e0",
+            "file": "src/app/components/row/row.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cms-row",
+            "styleUrls": [
+                "./row.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./row.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "content",
+                    "line": 22,
+                    "type": "RowContentDoc"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Build layouts of all shapes and sizes with this row/column system built on top of Bootstrap</p>\n<ul>\n<li>12 column layout</li>\n<li>5 default breakpoints for responsive layouts<ul>\n<li><code>xs</code> (phone)</li>\n<li><code>sm</code> (large phone)</li>\n<li><code>md</code> (tablet)</li>\n<li><code>lg</code> (desktop)</li>\n<li><code>xl</code> (large desktop)</li>\n</ul>\n</li>\n</ul>\n",
+            "rawdescription": "Build layouts of all shapes and sizes with this row/column system built on top of Bootstrap\r\n\r\n- 12 column layout\r\n- 5 default breakpoints for responsive layouts\r\n    - `xs` (phone)\r\n    - `sm` (large phone)\r\n    - `md` (tablet)\r\n    - `lg` (desktop)\r\n    - `xl` (large desktop)",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\r\nimport { RowContentDoc } from 'src/app/models/RowContentDoc.interface';\r\n\r\n/**\r\n * Build layouts of all shapes and sizes with this row/column system built on top of Bootstrap\r\n * \r\n * - 12 column layout\r\n * - 5 default breakpoints for responsive layouts\r\n *    - `xs` (phone)\r\n *    - `sm` (large phone)\r\n *    - `md` (tablet)\r\n *    - `lg` (desktop)\r\n *    - `xl` (large desktop)\r\n */\r\n@Component({\r\n  selector: 'cms-row',\r\n  templateUrl: './row.component.html',\r\n  styleUrls: ['./row.component.scss'],\r\n  host: {'class': 'row'}\r\n})\r\nexport class RowComponent implements OnInit {\r\n  @Input() content: RowContentDoc;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./row.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 22
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<cms-column *ngFor=\"let content of content.Content\" [content]=\"content\">\r\n\r\n</cms-column>"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "BgColorDirective"
+                        },
+                        {
+                            "name": "CarouselComponent"
+                        },
+                        {
+                            "name": "ColumnComponent"
+                        },
+                        {
+                            "name": "ContentBlockComponent"
+                        },
+                        {
+                            "name": "ContentContainerComponent"
+                        },
+                        {
+                            "name": "HtmlEditorComponent"
+                        },
+                        {
+                            "name": "PageComponent"
+                        },
+                        {
+                            "name": "RowComponent"
+                        },
+                        {
+                            "name": "SafeHtmlPipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "BasicExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/carousel.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: CarouselComponent,\r\n  props: {\r\n    slides: BasicExampleSlides,\r\n  },\r\n})"
+            },
+            {
+                "name": "BasicExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/html-editor.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: HtmlEditorComponent,\r\n  props: {\r\n    ocCookieName: 'ordercloud.token'\r\n  }\r\n})"
+            },
+            {
+                "name": "BasicExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/row.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#EF476F\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#06D6A0\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc\r\n    }\r\n})"
+            },
+            {
+                "name": "BasicExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/page.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: PageComponent,\r\n  props: {\r\n    content: BasicExamplePage\r\n  },\r\n})"
+            },
+            {
+                "name": "BasicExamplePage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/page.stories.ts",
+                "type": "PageContentDoc",
+                "defaultValue": "{\r\n  ComponentName: 'PageComponent',\r\n  SiteUrl: 'https://music-resell-store.com',\r\n  Url: '/page1',\r\n  Title: 'FAQ',\r\n  Description: 'Frequently Asked Questions',\r\n  MetaImageUrl: 'https://www.superoffice.com/globalassets/blog/2016/10/how-to-build-faq-section.jpg',\r\n  DateLastUpdated: '2020-05-15T03:55:03.021Z',\r\n  Active: true,\r\n  Content: [\r\n    {\r\n      'ComponentName': 'ContentBlockComponent',\r\n      'TextArea': `\r\n      <div class=\"container\">\r\n        <p style=\"max-width: 500px;\">\r\n          You can right click to inspect the html to see the metadata that are set. Its easier if you click 'Open canvas in a new tab' (top right).\r\n          You should see the following metadata set for this component:\r\n        </p>\r\n        <table class=\"table table-striped\">\r\n          <tr>\r\n            <th>Property</th>\r\n            <th>Value</th>\r\n          </tr>\r\n          <tr>\r\n            <td>Title</td>\r\n            <td>FAQ</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Description</td>\r\n            <td>Frequently Asked Questions</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Image</td>\r\n            <td>https://www.superoffice.com/globalassets/blog/2016/10/how-to-build-faq-section.jpg/<td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n      `,\r\n    },\r\n  ],\r\n  HeaderEmbeds: '',\r\n  FooterEmbeds: '',\r\n  NavTitle: null\r\n}"
+            },
+            {
+                "name": "BasicExampleSlides",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/carousel.stories.ts",
+                "type": "CmsCarouselSlideConfig[]",
+                "defaultValue": "[\r\n  {\r\n    text: {\r\n      title: 'First Slide',\r\n    },\r\n    background: {\r\n      image: {\r\n        url: `https://picsum.photos/id/944/1700/500`,\r\n        title: 'A metal bridge in the jungle',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    text: {\r\n      title: 'Second Slide',\r\n      subtitle: 'With a subtitle',\r\n    },\r\n    background: {\r\n      image: {\r\n        url: `https://picsum.photos/id/1011/1700/500`,\r\n        title: 'Woman canoeing',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    text: {\r\n      title: 'Third Slide',\r\n      subtitle: 'Background color instead of image',\r\n    },\r\n    background: {\r\n      color: 'blue',\r\n    },\r\n  },\r\n]"
+            },
+            {
+                "name": "CMS_CAROUSEL_DEFAULT_OPTIONS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/carousel/carousel.component.ts",
+                "type": "CmsCarouselOptions",
+                "defaultValue": "{\n  arrows: true,\n  indicators: true,\n  wrap: true,\n  interval: 5000,\n}"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\r\n  production: true\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\r\n  production: false\r\n}"
+            },
+            {
+                "name": "Offset",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/row.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc        \r\n    }\r\n})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "Responsive",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/row.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: {\r\n                        xs: 12,\r\n                        sm: 6,\r\n                        md: 3\r\n                    },\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#EF476F\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: {\r\n                        xs: 12,\r\n                        sm: 6,\r\n                        md: 3\r\n                    },\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: {\r\n                        xs: 12,\r\n                        sm: 6,\r\n                        md: 3\r\n                    },\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#06D6A0\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: {\r\n                        xs: 12,\r\n                        sm: 6,\r\n                        md: 3\r\n                    },\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc        \r\n    }\r\n})"
+            },
+            {
+                "name": "VariedWidths",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/storybook/row.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: 2,\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#EF476F\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: 3,\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: 6,\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#06D6A0\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: 1,\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc\r\n    }\r\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "BootstrapBreakpoint",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+                "file": "src/app/models/ColumnContentDoc.interface.ts",
+                "description": "",
+                "kind": 168
+            },
+            {
+                "name": "BootstrapCarouselPauseOption",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"hover\" | \"mouseenter\" | \"mouseleave\" | \"undefined\"",
+                "file": "src/app/models/CarouselContentDoc.interface.ts",
+                "description": "",
+                "kind": 168
+            },
+            {
+                "name": "BootstrapCarouselRideOption",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"carousel\" | \"undefined\"",
+                "file": "src/app/models/CarouselContentDoc.interface.ts",
+                "description": "",
+                "kind": 168
+            },
+            {
+                "name": "BootstrapMediaDefinition",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "src/app/models/ColumnContentDoc.interface.ts",
+                "description": "",
+                "kind": 176
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/storybook/carousel.stories.ts": [
+                {
+                    "name": "BasicExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/carousel.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: CarouselComponent,\r\n  props: {\r\n    slides: BasicExampleSlides,\r\n  },\r\n})"
+                },
+                {
+                    "name": "BasicExampleSlides",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/carousel.stories.ts",
+                    "type": "CmsCarouselSlideConfig[]",
+                    "defaultValue": "[\r\n  {\r\n    text: {\r\n      title: 'First Slide',\r\n    },\r\n    background: {\r\n      image: {\r\n        url: `https://picsum.photos/id/944/1700/500`,\r\n        title: 'A metal bridge in the jungle',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    text: {\r\n      title: 'Second Slide',\r\n      subtitle: 'With a subtitle',\r\n    },\r\n    background: {\r\n      image: {\r\n        url: `https://picsum.photos/id/1011/1700/500`,\r\n        title: 'Woman canoeing',\r\n      },\r\n    },\r\n  },\r\n  {\r\n    text: {\r\n      title: 'Third Slide',\r\n      subtitle: 'Background color instead of image',\r\n    },\r\n    background: {\r\n      color: 'blue',\r\n    },\r\n  },\r\n]"
+                }
+            ],
+            "src/storybook/html-editor.stories.ts": [
+                {
+                    "name": "BasicExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/html-editor.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: HtmlEditorComponent,\r\n  props: {\r\n    ocCookieName: 'ordercloud.token'\r\n  }\r\n})"
+                }
+            ],
+            "src/storybook/row.stories.ts": [
+                {
+                    "name": "BasicExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/row.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#EF476F\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#06D6A0\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc\r\n    }\r\n})"
+                },
+                {
+                    "name": "Offset",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/row.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc        \r\n    }\r\n})"
+                },
+                {
+                    "name": "Responsive",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/row.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: {\r\n                        xs: 12,\r\n                        sm: 6,\r\n                        md: 3\r\n                    },\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#EF476F\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: {\r\n                        xs: 12,\r\n                        sm: 6,\r\n                        md: 3\r\n                    },\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: {\r\n                        xs: 12,\r\n                        sm: 6,\r\n                        md: 3\r\n                    },\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#06D6A0\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: {\r\n                        xs: 12,\r\n                        sm: 6,\r\n                        md: 3\r\n                    },\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc        \r\n    }\r\n})"
+                },
+                {
+                    "name": "VariedWidths",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/row.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n    template: `\r\n        <div style=\"padding: 15px\">\r\n            <cms-row [content]=\"content\"></cms-row>\r\n        </div>\r\n    `,\r\n    props: {\r\n        content: {\r\n            ComponentName: \"RowComponent\",\r\n            Content: [\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: 2,\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#EF476F\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: 3,\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#FFD166\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: 6,\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#06D6A0\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n                {\r\n                    ComponentName: \"ColumnComponent\",\r\n                    Width: 1,\r\n                    Content: [\r\n                        {\r\n                            ComponentName: \"ContentBlockComponent\",\r\n                            Background: {\r\n                                ImageUrl: null,\r\n                                Color: \"#2B9EB3\"\r\n                            },\r\n                            DateRange: {\r\n                                StartDate: null,\r\n                                EndDate: null\r\n                            },\r\n                            HorizontalAlignment: \"Center\",\r\n                            VerticalAlignment: \"Middle\",\r\n                            TextArea: \"<h2>&zwnj;</h2>\",\r\n                        } as ContentDoc\r\n                    ]\r\n                },\r\n            ]\r\n        } as RowContentDoc\r\n    }\r\n})"
+                }
+            ],
+            "src/storybook/page.stories.ts": [
+                {
+                    "name": "BasicExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/page.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: PageComponent,\r\n  props: {\r\n    content: BasicExamplePage\r\n  },\r\n})"
+                },
+                {
+                    "name": "BasicExamplePage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/storybook/page.stories.ts",
+                    "type": "PageContentDoc",
+                    "defaultValue": "{\r\n  ComponentName: 'PageComponent',\r\n  SiteUrl: 'https://music-resell-store.com',\r\n  Url: '/page1',\r\n  Title: 'FAQ',\r\n  Description: 'Frequently Asked Questions',\r\n  MetaImageUrl: 'https://www.superoffice.com/globalassets/blog/2016/10/how-to-build-faq-section.jpg',\r\n  DateLastUpdated: '2020-05-15T03:55:03.021Z',\r\n  Active: true,\r\n  Content: [\r\n    {\r\n      'ComponentName': 'ContentBlockComponent',\r\n      'TextArea': `\r\n      <div class=\"container\">\r\n        <p style=\"max-width: 500px;\">\r\n          You can right click to inspect the html to see the metadata that are set. Its easier if you click 'Open canvas in a new tab' (top right).\r\n          You should see the following metadata set for this component:\r\n        </p>\r\n        <table class=\"table table-striped\">\r\n          <tr>\r\n            <th>Property</th>\r\n            <th>Value</th>\r\n          </tr>\r\n          <tr>\r\n            <td>Title</td>\r\n            <td>FAQ</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Description</td>\r\n            <td>Frequently Asked Questions</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Image</td>\r\n            <td>https://www.superoffice.com/globalassets/blog/2016/10/how-to-build-faq-section.jpg/<td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n      `,\r\n    },\r\n  ],\r\n  HeaderEmbeds: '',\r\n  FooterEmbeds: '',\r\n  NavTitle: null\r\n}"
+                }
+            ],
+            "src/app/components/carousel/carousel.component.ts": [
+                {
+                    "name": "CMS_CAROUSEL_DEFAULT_OPTIONS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/carousel/carousel.component.ts",
+                    "type": "CmsCarouselOptions",
+                    "defaultValue": "{\n  arrows: true,\n  indicators: true,\n  wrap: true,\n  interval: 5000,\n}"
+                }
+            ],
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: true\r\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: false\r\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/app/models/ColumnContentDoc.interface.ts": [
+                {
+                    "name": "BootstrapBreakpoint",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+                    "file": "src/app/models/ColumnContentDoc.interface.ts",
+                    "description": "",
+                    "kind": 168
+                },
+                {
+                    "name": "BootstrapMediaDefinition",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "src/app/models/ColumnContentDoc.interface.ts",
+                    "description": "",
+                    "kind": 176
+                }
+            ],
+            "src/app/models/CarouselContentDoc.interface.ts": [
+                {
+                    "name": "BootstrapCarouselPauseOption",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"hover\" | \"mouseenter\" | \"mouseleave\" | \"undefined\"",
+                    "file": "src/app/models/CarouselContentDoc.interface.ts",
+                    "description": "",
+                    "kind": 168
+                },
+                {
+                    "name": "BootstrapCarouselRideOption",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"carousel\" | \"undefined\"",
+                    "file": "src/app/models/CarouselContentDoc.interface.ts",
+                    "description": "",
+                    "kind": 168
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 3,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "e2e/src/app.po.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/carousel/carousel.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CarouselComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/carousel/carousel.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CMS_CAROUSEL_DEFAULT_OPTIONS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/column/column.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ColumnComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/content-block/content-block.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContentBlockComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/content-container/content-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContentContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/html-editor/html-editor.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HtmlEditorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/page/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 12,
+                "coverageCount": "1/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/row/row.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RowComponent",
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/directives/bg-color.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "BgColorDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/CarouselContentDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "BootstrapCarouselOptions",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/CarouselContentDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CarouselContentDoc",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/CmsAssets.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CmsAsset",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/CmsCarousel.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CmsBackground",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/CmsCarousel.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CmsCarouselOptions",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/CmsCarousel.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CmsCarouselSlideConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/CmsCarousel.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CmsCarouselSlideTextConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/ColumnContentDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ColumnContentDoc",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/ContentBlockDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Background",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/ContentBlockDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentBlockDoc",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/ContentBlockDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/ContentBlockDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DateRange",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/ContentDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentDoc",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/PageContentDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "PageContentDoc",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/models/RowContentDoc.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "RowContentDoc",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pipes/safe-html.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "SafeHtmlPipe",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/carousel.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BasicExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/carousel.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BasicExampleSlides",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/html-editor.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BasicExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BasicExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BasicExamplePage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/row.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BasicExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/row.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Offset",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/row.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Responsive",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/storybook/row.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "VariedWidths",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

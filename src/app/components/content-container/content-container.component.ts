@@ -1,34 +1,24 @@
-import { Component, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, Type, AfterViewInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ContentDoc } from 'src/app/models/ContentDoc.interface';
-import { takeWhile } from 'rxjs/operators';
-import { ContentBlock } from 'src/app/models/ConentBlock.interface';
+import { Component, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, Type, OnDestroy, AfterViewInit } from '@angular/core';
+import { ContentBlockDoc } from 'src/app/models/ContentBlockDoc.interface';
 
 @Component({
   selector: 'cms-content-container',
   template: '<ng-template #container></ng-template>',
   styleUrls: ['./content-container.component.scss']
 })
-export class ContentContainerComponent implements AfterViewInit, OnDestroy {
+export class ContentContainerComponent implements OnDestroy, AfterViewInit {
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef
-  @Input() content: ContentBlock;
+  @Input() content: ContentBlockDoc;
   alive = true;
 
   constructor(
-    private resolver: ComponentFactoryResolver,
-    private httpClient: HttpClient
+    private resolver: ComponentFactoryResolver
   ) { }
 
   ngAfterViewInit() {
-    this.renderComponent(this.content.ComponentName, this.content);
-    // return this.httpClient.get(this.contentDocUrl)
-    //   .pipe(takeWhile(() => this.alive))
-    //   .subscribe((doc: ContentDoc) => {
-    //     this.renderComponent(doc.Type, doc);
-    //   }, (error: any) => {
-    //     console.log(mockData);
-    //     this.renderComponent(mockData.Type, mockData);
-    //   })
+    setTimeout(() => {
+      this.renderComponent(this.content.ComponentName, this.content);
+    })
   }
 
   ngOnDestroy() {

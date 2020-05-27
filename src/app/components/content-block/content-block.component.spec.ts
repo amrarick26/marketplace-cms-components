@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContentBlockComponent } from './ContentBlock.component';
+import { ContentBlockComponent } from './content-block.component';
 
 describe('ContentBlockComponent', () => {
   let component: ContentBlockComponent;

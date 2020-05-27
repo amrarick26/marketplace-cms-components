@@ -1,24 +1,25 @@
-export interface ContentBlock {
-    ComponentName: string;
+import { ContentDoc } from './ContentDoc.interface';
+
+export interface ContentBlockDoc extends ContentDoc {
     Background: Background;
     DateRange: DateRange;
     HorizontalAlignment: 'Left' | 'Center' | 'Right';
     VerticalAlignment: 'Top' | 'Middle' | 'Bottom';
-    Button: ContentButton;
+    Button?: ContentButton;
     TextArea: string;
 }
 
-export interface Background {
+interface Background {
     ImageUrl: string; // assetID
     Color: string;
 }
 
-export interface DateRange {
-    StartDate: Date;
-    EndDate: Date;
+interface DateRange {
+    StartDate?: Date;
+    EndDate?: Date;
 }
 
-export interface ContentButton {
+interface ContentButton {
     Text: string;
     Link: string;
     Color: string;
