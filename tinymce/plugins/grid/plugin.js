@@ -28,11 +28,9 @@ tinymce.PluginManager.add('grid', function(editor, url) {
             ],
             onSubmit: function (api) {
               const data = api.getData();
-              editor.insertContent(`
-                <div class="row">
-                    ${getColumns(data.columns)}
-                </div>
-            `);
+                editor.insertContent(
+                    `${renderRows(data.rows, data.columns)}`
+                );
               api.close();
             },
         })
@@ -55,12 +53,25 @@ tinymce.PluginManager.add('grid', function(editor, url) {
       };
 })
 
-function getColumns(col) {
+function renderRows(rows, columns) {
+    let renderedRows = [];
+    for (let r = 0; r < parseInt(rows); r++) {
+        renderedRows = [...renderedRows, `
+            <div class="row" style="background-color: #eee">
+                ${renderColumns(columns)}
+            </div>
+        `]
+    }
+    return renderedRows.join('');
+}
+
+function renderColumns(columns) {
     let renderedColumns = [];
-    for (let c = 0; c < parseInt(col); c++) {
+    let columnWidth = 12 / parseInt(columns);
+    for (let c = 0; c < parseInt(columns); c++) {
         renderedColumns = [...renderedColumns, `
-        <div class="col-lg-6">
-            <p>${c}</p>
+        <div class="col-lg-${columnWidth}">
+            <p>COL ${c}</p>
         </div>
     `]
     }
